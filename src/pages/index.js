@@ -14,7 +14,7 @@ export default function Home() {
           <Header></Header>
         </Head>
         <h1>Test App</h1>
-        <select>
+        <select class="rounded rounded-lg p-2">
           <option>Semestre I</option>
           <option>Semestre II</option>
           <option>Semestre III</option>
