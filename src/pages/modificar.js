@@ -13,7 +13,6 @@ export default function Home() {
         <Head>
         </Head>
         <Modificar></Modificar>
-        <h1>MODIFICAR</h1>
       </div>
     </>
   );
