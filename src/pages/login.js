@@ -7,19 +7,19 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-      <div class="mx-auto my-36 flex-col h-[300px] w-[350px] border-2 bg-white text-black shadow-xl">
+      <div class="mx-auto my-16 flex-col w-[350px] border-2 rounded-lg bg-[white] text-black shadow-xl">
         <div class="flex flex-col items-center">
-          <img src="logouta.png" alt="Logo UTA"></img>
+          <img src="logouta.png" alt="Logo UTA" class="m-2 p-2 w-72"></img>
         </div>
         <div class="my-2 flex justify-center">
-          <div class="font-sans font-bold text-center text-xl">Por favor inicie sesion para administrar horario</div>
+          <div class="font-sans font-bold text-center text-xl">Inicie sesion para administrar horario</div>
         </div>
         <div class="flex flex-col items-center">
           <input class="my-2 w-72 border p-2" type="email" placeholder="Nombre de usuario" />
           <input class="my-2 w-72 border p-2" type="password" placeholder="Contraseña" />
         </div>
-        <div class="my-2 flex justify-center">
-          <button class="w-72 border bg-[#284262] p-2 font-sans text-amber-300 text-xl font-bold">Iniciar sesion</button>
+        <div class="mb-2 flex justify-center">
+          <button class="my-2 w-72 border rounded bg-[#284262] p-2 font-sans text-amber-300 text-m font-bold hover:bg-[#284260]">Iniciar sesion</button>
         </div>
       </div>
     </>
