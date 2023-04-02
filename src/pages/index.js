@@ -57,10 +57,13 @@ export default function Home() {
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 1 - 2  (08:00-09:30) </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         <div>
-                          Mark
+                          Asignatura
                         </div>
                         <div class="text-gray-500">
-                          aasd
+                          Sala - Grupo
+                        </div>
+                        <div class="text-gray-500">
+                          Profesor
                         </div>
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
