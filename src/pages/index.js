@@ -10,6 +10,7 @@ export default function Home() {
       <div className={styles.container}>
 
         <Head>
+        <title> UTA ICCI - HORARIO </title>
         </Head>
         <h1>Test App</h1>
         <select class="rounded rounded-lg p-2">
@@ -23,9 +24,6 @@ export default function Home() {
           <option>Semestre IX</option>
           <option>Semestre XI</option>
         </select>
-        <div>
-          <a href="login">AAAA</a>
-        </div>
         <div class="flex flex-col">
           <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8 bg-emerald-200">
