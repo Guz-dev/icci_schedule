@@ -7,24 +7,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-      <div className={styles.container}>
-
-        <Head>
-          <title> UTA ICCI - HORARIO </title>
-        </Head>
-        {/* <h1>Test App</h1> */}
-        {/* <select class="rounded rounded-lg p-2">
-          <option>Semestre I</option>
-          <option>Semestre II</option>
-          <option>Semestre III</option>
-          <option>Semestre IV</option>
-          <option>Semestre V</option>
-          <option>Semestre VI</option>
-          <option>Semestre VII</option>
-          <option>Semestre IX</option>
-          <option>Semestre XI</option>
-        </select> */}
-        <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
+      <Head>
+        <title> UTA ICCI - MODIFICACION DE HORARIO </title>
+      </Head>
+      <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
           <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semana </div>
           <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-blue-400 rounded-t "><a id="default-tab" href="#first">0</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semI">I</a></li>
@@ -37,8 +23,7 @@ export default function Home() {
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIX">IX</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semXI">XI</a></li>
         </ul>
-        <a href="crud" class="pl-10">Ir al crud</a>
-        <div class="flex flex-col">
+      <div class="flex flex-col">
           <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div class="overflow-hidden">
@@ -47,37 +32,34 @@ export default function Home() {
                   <thead class="bg-[#284262] border-b border-gray-100 text-white">
                     <tr>
                       <th scope="col" class="text-sm font-bold px-6 py-4 text-center border-r border-solid">
-                        Clave hora
+                        Bloque
                       </th>
                       <th scope="col" class="text-sm font-bold px-6 py-4 text-center border-r border-solid">
-                        Lunes
+                        Asignatura
                       </th>
                       <th scope="col" class="text-sm font-bold px-6 py-4 text-center border-r border-solid">
-                        Martes
+                        Grupo
                       </th>
                       <th scope="col" class="text-sm font-bold px-6 py-4 text-center border-r border-solid">
-                        Miercoles
+                        Profesor
                       </th>
                       <th scope="col" class="text-sm font-bold px-6 py-4 text-center border-r border-solid">
-                        Jueves
+                        Sala
                       </th>
                       <th scope="col" class="text-sm font-bold px-6 py-4 text-center">
-                        Viernes
+                        Editar
+                      </th>
+                      <th scope="col" class="text-sm font-bold px-6 py-4 text-center">
+                        Eliminar
                       </th>
                     </tr>
                   </thead>
                   <tbody class="bg-gray-100">
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 1 - 2  (08:00-09:30) </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 1 - 2  (08:00-09:30) </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         <div>
                           Asignatura
-                        </div>
-                        <div class="text-gray-500">
-                          Sala - Grupo
-                        </div>
-                        <div class="text-gray-500">
-                          Profesor
                         </div>
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
@@ -89,33 +71,39 @@ export default function Home() {
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         @mdo
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
+                      <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                      </td>
+                      <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 3 - 4 (09:40-11:10)</td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                        Jacob
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 3 - 4 (09:40-11:10)</td>
+                      <td class="text-sm bg-emerald-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Agregar</a>
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        Thornton
+                        
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        @fat
+                        
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        @mdo
+                        
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-solid border-emerald-900">
+                        
+                      </td>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-solid border-emerald-900">
+                        
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 5 - 6 (11:20-12:50) </td>
-                      <td colspan="2" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                        Larry
-                      </td>              
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 5 - 6 (11:20-12:50) </td>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                        @twitter
+                      </td>            
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         @twitter
                       </td>
@@ -125,9 +113,15 @@ export default function Home() {
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         @mdo
                       </td>
+                      <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                      </td>
+                      <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                      </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 7 - 8 (14:45-16:15) </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 7 - 8 (14:45-16:15) </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Whitney
                       </td>
@@ -140,12 +134,15 @@ export default function Home() {
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         @mdo
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
+                      <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                      </td>
+                      <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 9 - 10 (16:20-17:50)</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 9 - 10 (16:20-17:50)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Ted
                       </td>
@@ -158,12 +155,15 @@ export default function Home() {
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         @mdo
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
+                      <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                      </td>
+                      <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 11 - 12 (17:55-19:25)</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 11 - 12 (17:55-19:25)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Mark
                       </td>
@@ -176,12 +176,15 @@ export default function Home() {
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         @mdo
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
+                      <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                      </td>
+                      <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 13 - 14 (19:30-21:00)</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 13 - 14 (19:30-21:00)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Mark
                       </td>
@@ -194,8 +197,11 @@ export default function Home() {
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         @mdo
                       </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
+                      <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                      </td>
+                      <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
                       </td>
                     </tr>
                   </tbody>
@@ -203,15 +209,8 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <a href="/" class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
         </div>
-      </div>       
     </>
-  
-  
-  );
-
-  
-  
+  ); 
 }
-
-

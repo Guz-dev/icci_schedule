@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
+      <Head>
+        <title> UTA ICCI - INGRESO </title>
+      </Head>
       <div class="mx-auto my-16 flex-col w-[350px] border-2 rounded-lg bg-[white] text-black shadow-xl opacity-80">
         <div class="flex flex-col items-center">
           <img src="logouta.png" alt="Logo UTA" class="m-2 p-2 w-72"></img>
@@ -23,6 +26,8 @@ export default function Home() {
         </div>
         <a href="/" class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
       </div>
+
+
     </>
   );
 }

@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
     </Head>
-    <header class="flex justify-between flex-wrap bg-[#17286b] p-2">
+    <header class="flex justify-between flex-wrap bg-[#17286b] p-2 pb-0">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
       <a href="/"><img class="py-3.5 pr-2" src="logo_web_uta.png" alt="Logo alt UTA"></img></a>
         {/* <img class="py-3.5 pr-2" src="logo_web_uta.png" alt="Logo alt UTA"></img> */}
