@@ -72,16 +72,16 @@ export default function Home() {
                         @mdo
                       </td>
                       <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</Link>
                       </td>
                       <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</Link>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 3 - 4 (09:40-11:10)</td>
                       <td class="text-sm bg-emerald-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Agregar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Agregar</Link>
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         
@@ -114,10 +114,10 @@ export default function Home() {
                         @mdo
                       </td>
                       <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</Link>
                       </td>
                       <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</Link>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
@@ -135,10 +135,10 @@ export default function Home() {
                         @mdo
                       </td>
                       <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</Link>
                       </td>
                       <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</Link>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
@@ -156,10 +156,10 @@ export default function Home() {
                         @mdo
                       </td>
                       <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</Link>
                       </td>
                       <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</Link>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
@@ -177,10 +177,10 @@ export default function Home() {
                         @mdo
                       </td>
                       <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</Link>
                       </td>
                       <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</Link>
                       </td>
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
@@ -198,10 +198,10 @@ export default function Home() {
                         @mdo
                       </td>
                       <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</Link>
                       </td>
                       <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                        <Link href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</Link>
                       </td>
                     </tr>
                   </tbody>

@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <div class="mx-auto my-16 flex-col w-[350px] border-2 rounded-lg bg-[white] text-black shadow-xl opacity-80">
         <div class="flex flex-col items-center">
-          <img src="logouta.png" alt="Logo UTA" class="m-2 p-2 w-72"></img>
+          <Image height={200} width={200} src="/logouta.png" alt="Logo UTA" class="m-2 p-2 w-72"></Image>
         </div>
         <div class="my-2 flex justify-center">
           <div class="font-sans font-bold text-center text-xl">Inicie sesion para administrar el horario </div>
@@ -24,8 +24,8 @@ export default function Home() {
         <div class="mb-2 flex justify-center">
           <button class="my-2 w-72 border rounded bg-[#284262] p-2 font-sans text-amber-300 text-m font-bold hover:bg-amber-300 hover:text-black hover:delay-75 ">Iniciar sesion</button>
         </div>
-        <Link href="/">
-          <a href="/" class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
+        <Link href="/" class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">
+          Volver al horario
         </Link>
       </div>
 

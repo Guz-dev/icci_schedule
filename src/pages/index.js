@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -36,7 +37,7 @@ export default function Home() {
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIX">IX</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semXI">XI</a></li>
         </ul>
-        <a href="crud" class="pl-10">Ir al crud</a>
+        <Link href="crud" class="pl-10">Ir al crud</Link>
         <div class="flex flex-col">
           <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
