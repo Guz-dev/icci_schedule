@@ -209,7 +209,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <a href="/" class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
+          <Link href="/">
+          <a class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
+          </Link>
         </div>
     </>
   ); 
