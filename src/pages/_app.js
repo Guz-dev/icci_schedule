@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
         <span class="font-semibold  self-center text-xl uppercase">📅 Icci_schedule</span>
       </div>
       <Link href="login">
-      <a href='login' class=" px-4 py-2 self-center text-white mr-6 hover:text-amber-300 hover:delay-75 hover:border-yellow-300 font-bold lg:mt-0 rounded-full border-2 border-amber-300 ">MODIFICAR</a>
+        <a href='login' class=" px-4 py-2 self-center text-white mr-6 hover:text-amber-300 hover:delay-75 hover:border-yellow-300 font-bold lg:mt-0 rounded-full border-2 border-amber-300 ">MODIFICAR</a>
       </Link>
 {/* =======
     <header class="flex justify-between flex-wrap bg-[#284262] p-6">
