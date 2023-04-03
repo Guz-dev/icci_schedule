@@ -2,9 +2,55 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import test, { getStaticProps } from '../components/test'
+import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+  const ramos = {
+    "0": {
+      "id":"1",
+      "Ramo":"Taller de desarrollo",
+      "Codigo":"CC210"
+    },
+    "1": {
+      "id":"1",
+      "Ramo":"Taller de desarrollo",
+      "Codigo":"CC210"
+    },
+    "2": {
+      "id":"1",
+      "Ramo":"Taller de desarrollo",
+      "Codigo":"CC210"
+    },
+    "3": {
+      "id":"1",
+      "Ramo":"Taller de desarrollo",
+      "Codigo":"CC210"
+    },
+  };
+  const horarios = [
+    {
+      idBloque:1,
+      idRamo:1,
+      Grupo:'a'
+    },
+    {
+      idBloque:3,
+      idRamo:3,
+      Grupo:'b'
+    },
+    {
+      idBloque:5,
+      idRamo:34,
+      Grupo:'a'
+    }
+    
+  ];
+
+  /* getStaticProps() */
+
   return (
     <>
       <Head>
@@ -55,29 +101,32 @@ export default function Home() {
                     </tr>
                   </thead>
                   <tbody class="bg-gray-100">
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 1 - 2  (08:00-09:30) </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                        <div>
-                          Asignatura
-                        </div>
-                      </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        Otto
-                      </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        @mdo
-                      </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        @mdo
-                      </td>
-                      <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
-                      </td>
-                      <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
-                      </td>
-                    </tr>
+
+                    {horarios.map((horario,index) => {
+                            return (
+                                  <tr key={index} class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes bloque {horario.idBloque} (08:00-09:30) </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
+                                      {horario.idRamo}
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                                    {horario.Grupo}
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                                      @mdo
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                                      @mdo
+                                    </td>
+                                    <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                                      <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
+                                    </td>
+                                    <td class="text-sm bg-red-500 px-6 py-4 whitespace-nowrap text-center font-thin">
+                                      <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Eliminar</a>
+                                    </td>
+                                </tr>
+                            );
+                          })}
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 3 - 4 (09:40-11:10)</td>
                       <td class="text-sm bg-emerald-500 px-6 py-4 whitespace-nowrap text-center font-thin">
