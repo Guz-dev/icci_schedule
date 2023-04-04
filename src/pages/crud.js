@@ -245,7 +245,7 @@ export default function Home({ bloques }) {
               </div>
             </div>
           </div>
-          <a href="/" class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
+          <a href="." class="item-center text-gray-900 text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
         </div>
     </>
   ); 
