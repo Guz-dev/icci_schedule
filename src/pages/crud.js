@@ -2,34 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import test, { getStaticProps } from '../components/test'
 import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ bloques }) {
 
-  const ramos = {
-    "0": {
-      "id":"1",
-      "Ramo":"Taller de desarrollo",
-      "Codigo":"CC210"
-    },
-    "1": {
-      "id":"1",
-      "Ramo":"Taller de desarrollo",
-      "Codigo":"CC210"
-    },
-    "2": {
-      "id":"1",
-      "Ramo":"Taller de desarrollo",
-      "Codigo":"CC210"
-    },
-    "3": {
-      "id":"1",
-      "Ramo":"Taller de desarrollo",
-      "Codigo":"CC210"
-    },
-  };
   const horarios = [
     {
       idBloque:1,
@@ -49,15 +26,19 @@ export default function Home() {
     
   ];
 
-  /* getStaticProps() */
-
+  console.log(bloques);
+  
+  {/*bloques.map((bloque,index) => {
+  return <p key={index}>{bloque.profesor}</p>
+})*/}
   return (
     <>
+    
       <Head>
         <title> UTA ICCI - MODIFICACION DE HORARIO </title>
       </Head>
       <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
-          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semana </div>
+          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-blue-400 rounded-t "><a id="default-tab" href="#first">0</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semI">I</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semII">II</a></li>
@@ -102,21 +83,27 @@ export default function Home() {
                   </thead>
                   <tbody class="bg-gray-100">
 
-                    {horarios.map((horario,index) => {
+                    {bloques.map((bloque,index) => {
+                      if (bloque.ramos.semestre===1) {
+                        
+                      }
                             return (
+                              
                                   <tr key={index} class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes bloque {horario.idBloque} (08:00-09:30) </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
+                                      Lunes bloque {bloque.id_bloques_horas} (08:00-09:30) 
+                                    </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                                      {horario.idRamo}
+                                      semestre {bloque.ramos.semestre}
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                                    {horario.Grupo}
+                                    {bloque.grupo}
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                                      @mdo
+                                    {bloque.profesor}
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                                      @mdo
+                                      {bloque.sala}
                                     </td>
                                     <td class="text-sm bg-blue-500 px-6 py-4 whitespace-nowrap text-center font-thin">
                                       <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Editar</a>
@@ -262,4 +249,20 @@ export default function Home() {
         </div>
     </>
   ); 
+}
+
+
+
+export async function getStaticProps(){
+
+  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
+                        .then((res) => {            
+                        return res.json()
+                      })
+  
+  return {
+      props:{
+          bloques: data
+      }
+  }
 }
