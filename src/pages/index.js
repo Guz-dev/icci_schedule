@@ -25,25 +25,25 @@ export default function Home() {
         </select> */}
         <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
           <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semana </div>
-          <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-blue-400 rounded-t "><a id="default-tab" href="#first">0</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semI">I</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semII">II</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIII">III</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIV">IV</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semV">V</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semVI">VI</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semVII">VII</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIX">IX</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semXI">XI</a></li>
+          <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-blue-400 rounded-t hover:bg-gray-300"><a id="default-tab" href="#first">0</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semI">I</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semII">II</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semIII">III</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semIV">IV</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semV">V</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semVI">VI</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semVII">VII</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semIX">IX</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semXI">XI</a></li>
         </ul>
         <a href="crud" class="pl-10">Ir al crud</a>
         <div class="flex flex-col">
           <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-              <div class="overflow-hidden">
-                <table class="min-w-full border-4 border-gray-100">
+              <div class="overflow-hidden bg-gray-100 rounded-2xl p-2 shadow-md">
+                <table class="min-w-full">
                   {/* <thead class="bg-gray-200 border-b"> */}
-                  <thead class="bg-[#284262] border-b border-gray-100 text-white">
+                  <thead class="bg-[#17286b] border-b border-gray-100 text-white">
                     <tr>
                       <th scope="col" class="text-sm font-bold px-6 py-4 text-center border-r border-solid">
                         Clave hora
@@ -65,8 +65,8 @@ export default function Home() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody class="bg-gray-100">
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                  <tbody class="">
+                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 1 - 2  (08:00-09:30) </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         <div>
@@ -92,7 +92,7 @@ export default function Home() {
                         @mdo
                       </td>
                     </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 3 - 4 (09:40-11:10)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Jacob
@@ -110,7 +110,7 @@ export default function Home() {
                         @mdo
                       </td>
                     </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 5 - 6 (11:20-12:50) </td>
                       <td colspan="2" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Larry
@@ -125,7 +125,7 @@ export default function Home() {
                         @mdo
                       </td>
                     </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 7 - 8 (14:45-16:15) </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Whitney
@@ -143,7 +143,7 @@ export default function Home() {
                         @mdo
                       </td>
                     </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 9 - 10 (16:20-17:50)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Ted
@@ -161,7 +161,7 @@ export default function Home() {
                         @mdo
                       </td>
                     </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 11 - 12 (17:55-19:25)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Mark
@@ -179,7 +179,7 @@ export default function Home() {
                         @mdo
                       </td>
                     </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 13 - 14 (19:30-21:00)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                         Mark

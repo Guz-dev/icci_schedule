@@ -10,7 +10,7 @@ export default function Home() {
       <Head>
         <title> UTA ICCI - INGRESO </title>
       </Head>
-      <div class="mx-auto my-16 flex-col w-[350px] border-2 rounded-lg bg-[white] text-black shadow-xl opacity-80">
+      <div class="mx-auto my-16 pt-2 flex-col w-[350px] border-2 rounded-lg bg-[white] text-black shadow-xl opacity-80">
         <div class="flex flex-col items-center">
           <img src="logouta.png" alt="Logo UTA" class="m-2 p-2 w-72"></img>
         </div>
@@ -18,13 +18,13 @@ export default function Home() {
           <div class="font-sans font-bold text-center text-xl">Inicie sesion para administrar el horario </div>
         </div>
         <div class="flex flex-col items-center">
-          <input class="my-2 w-72 border p-2 rounded-3xl bg-[#284262] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="nombre" placeholder="Nombre de usuario" />
-          <input class="my-2 w-72 border p-2 rounded-3xl bg-[#284262] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="password" placeholder="Contraseña" />
+          <input class="my-2 w-72 border p-2 rounded-3xl bg-[#17286b] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="nombre" placeholder="Nombre de usuario" />
+          <input class="my-2 w-72 border p-2 rounded-3xl bg-[#17286b] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="password" placeholder="Contraseña" />
         </div>
-        <div class="mb-2 flex justify-center">
-          <button class="my-2 w-72 border rounded bg-[#284262] p-2 font-sans text-amber-300 text-m font-bold hover:bg-amber-300 hover:text-black hover:delay-75 ">Iniciar sesion</button>
+        <div class="mt-2 flex justify-center">
+          <a href="crud" class="w-72 text-center border rounded bg-[#17286b] p-2 font-sans text-amber-300 text-m font-bold hover:bg-amber-300 hover:text-black hover:delay-75">Iniciar sesion</a>
         </div>
-        <a href="/" class="item-center text-lg flex justify-center pt-3.5 pb-0 hover:text-xl hover:font-bold ">Volver al horario</a>
+        <a href="." class="item-center pb-4 flex justify-center pt-2 pb-0 hover:text-md hover:font-bold ">Volver al horario</a>
       </div>
 
 
