@@ -27,6 +27,8 @@ export default function Home({ bloques }) {
   ];
 
   console.log(bloques);
+  var semestre=2
+  
   
   {/*bloques.map((bloque,index) => {
   return <p key={index}>{bloque.profesor}</p>
@@ -81,33 +83,34 @@ export default function Home({ bloques }) {
                   <tbody class="bg-gray-100">
 
                     {bloques.map((bloque,index) => {
-                      if (bloque.ramos.semestre===1) {
+                      if (bloque.ramos.semestre===semestre) {
+                        return (
+                              
+                          <tr key={index} class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
+                              Lunes bloque {bloque.id_bloques_horas} (08:00-09:30) 
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
+                              semestre {bloque.ramos.semestre} idramo {bloque.id_ramos}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                            {bloque.grupo}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                            {bloque.profesor}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                              {bloque.sala}
+                            </td>
+                            <td class="text-sm px-6 py-4 whitespace-nowrap text-center font-thin">
+                              <a href="#" class="text-base bg-blue-500 p-2 rounded-l text-center font-bold text-white hover:text-amber-300">Editar</a>
+                              <a href="#" class="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</a>
+                            </td>
+                        </tr>
+                    );
                         
                       }
-                            return (
-                              
-                                  <tr key={index} class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
-                                      Lunes bloque {bloque.id_bloques_horas} (08:00-09:30) 
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                                      semestre {bloque.ramos.semestre}
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                                    {bloque.grupo}
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                                    {bloque.profesor}
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                                      {bloque.sala}
-                                    </td>
-                                    <td class="text-sm px-6 py-4 whitespace-nowrap text-center font-thin">
-                                      <a href="#" class="text-base bg-blue-500 p-2 rounded-l text-center font-bold text-white hover:text-amber-300">Editar</a>
-                                      <a href="#" class="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</a>
-                                    </td>
-                                </tr>
-                            );
+                            
                           })}
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 3 - 4 (09:40-11:10)</td>
