@@ -13,25 +13,6 @@ export default function Home({ bloques }) {
     '(08:00-09:30)', '(09:40-11:10)', '(11:20-12:50)', '(14:45-16:15)', '(16:20-17:50)', '(17:55-19:25)', '(19:30-21:00)'
   ]
 
-  const horarios = [
-    {
-      idBloque:1,
-      idRamo:1,
-      Grupo:'a'
-    },
-    {
-      idBloque:3,
-      idRamo:3,
-      Grupo:'b'
-    },
-    {
-      idBloque:5,
-      idRamo:34,
-      Grupo:'a'
-    }
-    
-  ];
-
   console.log(bloques);
   var semestre=2
   
@@ -48,15 +29,15 @@ export default function Home({ bloques }) {
       <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
           <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-blue-400 rounded-t "><a id="default-tab" href="#first">0</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semI">I</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semII">II</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIII">III</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIV">IV</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semV">V</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semVI">VI</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semVII">VII</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semIX">IX</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="#semXI">XI</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/1">I</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/2">II</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/3">III</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/4">IV</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/5">V</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/6">VI</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/7">VII</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/8">IX</a></li>
+          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><a href="/crud/9">XI</a></li>
         </ul>
       <div class="flex flex-col">
           <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -89,14 +70,14 @@ export default function Home({ bloques }) {
                   <tbody class="bg-gray-100">
 
                     {bloques.map((bloque,index) => {
-                      if (bloque.ramos.semestre===semestre) {
+                      if (bloque.semestre===semestre) {
                         return (  
                           <tr key={index} class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
                               {dias[bloque.dia-1]} bloque {bloque.id_bloques_horas} {bloq[bloque.id_bloques_horas-1]} 
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                              semestre {bloque.ramos.semestre} idramo {bloque.id_ramos}
+                              semestre {bloque.semestre} idramo {bloque.id_ramos}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                             {bloque.grupo}
