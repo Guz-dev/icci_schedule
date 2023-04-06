@@ -6,6 +6,12 @@ import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ bloques }) {
+  let dias = [
+    'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'
+  ]
+  let bloq = [
+    '(08:00-09:30)', '(09:40-11:10)', '(11:20-12:50)', '(14:45-16:15)', '(16:20-17:50)', '(17:55-19:25)', '(19:30-21:00)'
+  ]
 
   const horarios = [
     {
@@ -84,11 +90,10 @@ export default function Home({ bloques }) {
 
                     {bloques.map((bloque,index) => {
                       if (bloque.ramos.semestre===semestre) {
-                        return (
-                              
+                        return (  
                           <tr key={index} class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
-                              Lunes bloque {bloque.id_bloques_horas} (08:00-09:30) 
+                              {dias[bloque.dia-1]} bloque {bloque.id_bloques_horas} {bloq[bloque.id_bloques_horas-1]} 
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                               semestre {bloque.ramos.semestre} idramo {bloque.id_ramos}
@@ -106,12 +111,10 @@ export default function Home({ bloques }) {
                               <a href="#" class="text-base bg-blue-500 p-2 rounded-l text-center font-bold text-white hover:text-amber-300">Editar</a>
                               <a href="#" class="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</a>
                             </td>
-                        </tr>
-                    );
-                        
-                      }
-                            
-                          })}
+                          </tr>
+                        );
+                      }    
+                    })}
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 3 - 4 (09:40-11:10)</td>
                       <td class="text-sm bg-emerald-500 px-6 py-4 whitespace-nowrap text-center font-thin">
