@@ -1,5 +1,6 @@
 import { supabase } from "./supabaseClient"
 
+const DIAS = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
 export default async function handler(req, res) {  
   const { data } = await supabase.from('semestres')
               .select(`semestre, 
@@ -8,6 +9,12 @@ export default async function handler(req, res) {
                 bloques_horas( inicio, termino )
               )
               `)
+
+  
+  data.map(dato => {
+    dato.bloques_horario.dia = DIAS[dato.bloques_horario.dia-1] 
+  })
+                
   /* 
   const { data } = await supabase.from('semestres')
               .select(`semestre, 
