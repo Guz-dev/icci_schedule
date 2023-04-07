@@ -3,7 +3,10 @@ import { supabase } from "./supabaseClient"
 export default async function handler(req, res) {  
   const { data } = await supabase.from('semestres')
               .select(`semestre, 
-              bloques_horario( profesor, sala, grupo, ramos( ramo ))
+              bloques_horario( profesor, sala, grupo, dia,
+                ramos:id_ramos( ramo ),
+                bloques_horas:id_bloques_horas( inicio, termino )
+              )
               `)
   /* 
   const { data } = await supabase.from('semestres')
