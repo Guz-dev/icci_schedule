@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/Home.module.css"; 
 import { useState } from "react";
+import Modal from "src/components/Modal.js";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ bloques }) {
@@ -20,6 +22,15 @@ export default function Home({ bloques }) {
   {/*bloques.map((bloque,index) => {
   return <p key={index}>{bloque.profesor}</p>
 })*/}
+
+
+  const [popup, setPopup] = useState(false);
+  // const [show, setShow] = useState(false);
+
+
+  function Agregar(){
+    setPopup(true)
+  }
   return (
     <>
     
@@ -99,7 +110,8 @@ export default function Home({ bloques }) {
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> Lunes 3 - 4 (09:40-11:10)</td>
                       <td class="text-sm bg-emerald-500 px-6 py-4 whitespace-nowrap text-center font-thin">
-                        <a href="#" class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Agregar</a>
+                        <button href="#" onClick= { Agregar }  class="text-base text-center font-bold text-white hover:text-amber-300 hover:shadow-lg">Agregar</button>
+                        {popup && <Modal viewPopup={setPopup} />}
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                         
