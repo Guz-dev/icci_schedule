@@ -16,7 +16,9 @@ export default function App({ Component, pageProps }) {
       
       <header class="flex justify-between flex-wrap bg-[#17286b] p-1 px-4">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <a href="."><img class="py-3.5 pr-2" src="logo_web_uta.png" alt="Logo alt UTA"></img></a>        
+          <a href=".">
+            <Image className="py-3.5 pr-2" src="/logo_web_uta.png" alt="Logo alt UTA" height={300} width={400}></Image>
+          </a>
           <div class="mx-auto flex w-[200px] px-6 "> ING. COMPUTACIÓN E INFORMÁTICA AÑO 2023 </div>
         </div> 
         <div class="flex items-center text-white mr-6">    
