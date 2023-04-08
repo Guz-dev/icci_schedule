@@ -1,5 +1,7 @@
 import { supabase } from "./supabaseClient"
 
+const DIAS = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
+
 export default async function handler(req, res) {  
 
   const { data } = await supabase.from('semestres')
