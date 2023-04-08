@@ -15,6 +15,8 @@ export default function Home({ bloques }) {
 
   const [semestre,setSemestre] = useState(1)
 
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
   console.log(bloques);
   
   return (
@@ -25,8 +27,8 @@ export default function Home({ bloques }) {
       <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
-            return ( 
-              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(index+1)}>{sem}</button></li>
+            return (
+              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
             )
           })}
 
