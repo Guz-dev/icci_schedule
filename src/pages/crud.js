@@ -10,11 +10,12 @@ export default function Home({ bloques }) {
     'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'
   ]
 
+  const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const { setModal } = useModal()
 
   const [semestre,setSemestre] = useState(1)
 
-  //console.log(bloques);
+  console.log(bloques);
   
   return (
     <>
@@ -23,17 +24,12 @@ export default function Home({ bloques }) {
       </Head>
       <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(1)}>I</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(2)}>II</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(3)}>III</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(4)}>IV</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(5)}>V</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(6)}>VI</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(7)}>VII</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(8)}>VIII</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(9)}>IX</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(10)}>X</button></li>
-          <li className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(11)}>XI</button></li>
+          {semSym.map((sem,index) => {
+            return ( 
+              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button onClick={() => setSemestre(index+1)}>{sem}</button></li>
+            )
+          })}
+
         </ul>
       <div className="flex flex-col">
       <label className="text-base text-center font-bold cursor-pointer text-black hover:text-amber-300 hover:shadow-lg "
