@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Link from "next/link";
 import { useState } from "react";
-import { getURL } from "next/dist/shared/lib/utils";
 
 export default function Home() {
 
@@ -53,7 +52,7 @@ export default function Home() {
           <option>Semestre XI</option>
         </select> */}
         <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
-          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semana </div>
+          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-blue-400 rounded-t hover:bg-gray-300"><a id="default-tab" href="#first">0</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semI">I</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semII">II</a></li>
@@ -65,7 +64,7 @@ export default function Home() {
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semIX">IX</a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semXI">XI</a></li>
         </ul>
-        <a href="crud" class="pl-10">Ir al crud</a>
+        <Link href="crud" class="pl-10">Ir al crud</Link>
         <div class="flex flex-col">
           <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -236,7 +235,7 @@ export default function Home() {
         {/* Testeo */}
         <h1> TESTEO </h1>
         <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
-          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semana </div>
+          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300 "><a href="#semI" id="1"><button class="border-b-4" style={{ borderColor: color1 ? '#17286b' : '', color: color1 ? 'black' : ''}}
           onClick={ ChangeI }>I</button></a></li>
           <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300 "><a href="#semII" id="2"><button class="border-b-4" style={{ borderColor: color2 ? '#17286b': '', color: color2 ? 'black' : ''}}
