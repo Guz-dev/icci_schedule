@@ -4,7 +4,7 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Home() {
+export default function Home({ bloques }) {
 
   const [color1, changeColor1] = useState(false);
   const [color2, changeColor2] = useState(false);
@@ -31,7 +31,21 @@ export default function Home() {
   //   [26,27,28,29,30],
   //   [31,32,33,34,35]
   // ]);
+  console.log(bloques);
+  const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
 
+  const [semestre,setSemestre] = useState(1)
+
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+
+  /* bloques.map((bloque,index)=>{
+    return(
+      <div key={index}>
+
+      </div>
+    )
+  }) */
   return (
     <>
       <div className={styles.container}>
@@ -39,30 +53,14 @@ export default function Home() {
         <Head>
           <title> UTA ICCI - HORARIO </title>
         </Head>
-        {/* <h1>Test App</h1> */}
-        {/* <select class="rounded rounded-lg p-2">
-          <option>Semestre I</option>
-          <option>Semestre II</option>
-          <option>Semestre III</option>
-          <option>Semestre IV</option>
-          <option>Semestre V</option>
-          <option>Semestre VI</option>
-          <option>Semestre VII</option>
-          <option>Semestre IX</option>
-          <option>Semestre XI</option>
-        </select> */}
-        <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
-          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
-          <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-blue-400 rounded-t hover:bg-gray-300"><a id="default-tab" href="#first">0</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semI">I</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semII">II</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semIII">III</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semIV">IV</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semV">V</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semVI">VI</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semVII">VII</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semIX">IX</a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300"><a href="#semXI">XI</a></li>
+        <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
+          <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
+          {semSym.map((sem,index) => {
+            return (
+              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
+            )
+          })}
+
         </ul>
         <Link href="crud" class="pl-10">Ir al crud</Link>
         <div class="flex flex-col">
@@ -94,32 +92,40 @@ export default function Home() {
                     </tr>
                   </thead>
                   <tbody class="">
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 1 - 2  (08:00-09:30) </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                        <div>
-                          Asignatura
-                        </div>
-                        <div class="text-gray-500">
-                          Sala - Grupo
-                        </div>
-                        <div class="text-gray-500">
-                          Profesor
-                        </div>
-                      </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        Otto
-                      </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        @mdo
-                      </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                        @mdo
-                      </td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
-                      </td>
-                    </tr>
+                    {bloques.map((bloque,index)=>{
+                      if (bloque.semestre===semestre) {
+                        return (
+
+                          <tr key={index} class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 1 - 2  (08:00-09:30) </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
+                              <div>
+                                {bloque.bloques_horario.ramos.ramo}
+                              </div>
+                              <div class="text-gray-500">
+                                {bloque.bloques_horario.sala} - Grupo {bloque.bloques_horario.grupo}
+                              </div>
+                              <div class="text-gray-500">
+                                {bloque.bloques_horario.profesor}
+                              </div>
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                              Otto
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                              @mdo
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
+                              @mdo
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              @mdo
+                            </td>
+                          </tr>
+                        )
+                      }
+                    })
+                    }
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700"> 3 - 4 (09:40-11:10)</td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
@@ -251,4 +257,17 @@ export default function Home() {
   
 }
 
+export async function getStaticProps(){
+
+  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
+                        .then((res) => {            
+                        return res.json()
+                      })
+  
+  return {
+      props:{
+          bloques: data
+      }
+  }
+}
 
