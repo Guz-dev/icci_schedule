@@ -11,7 +11,7 @@ export default function Home({ bloques }) {
   ]
 
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
-  const tablTh = ['Bloque','Asignatura','Grupo','Profesor','Sala','']
+  const tablTh = ['Bloque','Dia','Asignatura','Grupo','Profesor','Sala','']
   const { setModal } = useModal()
 
   const [semestre,setSemestre] = useState(1)
@@ -68,6 +68,9 @@ export default function Home({ bloques }) {
                         <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-100">
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-900 border-r border-solid border-gray-700">
                             {bloque.bloques_horario.bloques_horas.inicio} - {bloque.bloques_horario.bloques_horas.termino} 
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-900 border-r border-solid border-gray-700">
+                            {bloque.bloques_horario.dia}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
                             semestre {bloque.semestre} id ramo {bloque.bloques_horario.ramos.ramo}
