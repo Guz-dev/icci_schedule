@@ -5,32 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Home({ bloques }) {
-
-  const [color1, changeColor1] = useState(false);
-  const [color2, changeColor2] = useState(false);
-
-  function ChangeI(){
-    changeColor1(true);
-    changeColor2(false);
-    console.log(document.getElementById("1"));
-  }
-
-  function ChangeII(){
-    // changeColor2(current => !current);
-    changeColor2(true);
-    changeColor1(false);
-    console.log(document.getElementById("2"));
-  }
-
-  // const [datos, setDatos] = useState([
-  //   [1,2,3,4,5],
-  //   [6,7,8,9,10],
-  //   [11,12,13,14,15],
-  //   [16,17,18,19,20],
-  //   [21,22,23,24,25],
-  //   [26,27,28,29,30],
-  //   [31,32,33,34,35]
-  // ]);
+ // Recuerden cambiar a class -> classname, img -> Image, y a -> Link
   console.log(bloques);
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
 
@@ -237,16 +212,6 @@ export default function Home({ bloques }) {
             </div>
           </div>
         </div>
-
-        {/* Testeo */}
-        <h1> TESTEO </h1>
-        <ul id="listaTabla" class="inline-flex w-full px-1 pt-2 ">
-          <div class="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300 "><a href="#semI" id="1"><button class="border-b-4" style={{ borderColor: color1 ? '#17286b' : '', color: color1 ? 'black' : ''}}
-          onClick={ ChangeI }>I</button></a></li>
-          <li class="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60 hover:bg-gray-300 "><a href="#semII" id="2"><button class="border-b-4" style={{ borderColor: color2 ? '#17286b': '', color: color2 ? 'black' : ''}}
-          onClick={ ChangeII }>II</button></a></li>
-        </ul>
       </div>       
     </>
   
