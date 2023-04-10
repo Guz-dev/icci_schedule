@@ -9,21 +9,14 @@ export default function Home({ bloques }) {
   console.log(bloques);
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Clave Hora','Lunes','Martes','Miercoles','Jueves','Viernes']
-  const hora = ['8:00','9:40','11:20','14:45','16:20','17:55','19:30']
-  const dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+  const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
 
   const [semestre,setSemestre] = useState(1)
 
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   
-  /* bloques.map((bloque,index)=>{
-    return(
-      <div key={index}>
 
-      </div>
-    )
-  }) */
   return (
     <>
       <div className={styles.container}>
@@ -63,8 +56,9 @@ export default function Home({ bloques }) {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
                             {bloque.bloques_horario.bloques_horas.inicio} - {bloque.bloques_horario.bloques_horas.termino}
                           </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                            {bloque.bloques_horario.dia === 'Lunes' && (
+                          {dias.map((dia, index) => (
+                            <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
+                            {bloque.bloques_horario.dia === dia && (
                               <div>
                                 <div className="font-medium">{bloque.bloques_horario.ramos.ramo}</div>
                                 <div className="text-gray-500">
@@ -74,50 +68,7 @@ export default function Home({ bloques }) {
                               </div>
                             )}
                           </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                            {bloque.bloques_horario.dia === 'Martes' && (
-                              <div>
-                              <div className="font-medium">{bloque.bloques_horario.ramos.ramo}</div>
-                              <div className="text-gray-500">
-                                {bloque.bloques_horario.sala} - Grupo {bloque.bloques_horario.grupo}<br></br>
-                                {bloque.bloques_horario.profesor} {bloque.bloques_horario.dia}
-                              </div>
-                            </div>
-                            )}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                            {bloque.bloques_horario.dia === 'Miercoles' && (
-                              <div>
-                              <div className="font-medium">{bloque.bloques_horario.ramos.ramo}</div>
-                              <div className="text-gray-500">
-                                {bloque.bloques_horario.sala} - Grupo {bloque.bloques_horario.grupo}<br></br>
-                                {bloque.bloques_horario.profesor} {bloque.bloques_horario.dia}
-                              </div>
-                            </div>
-                            )}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                            {bloque.bloques_horario.dia === 'Jueves' && (
-                              <div>
-                              <div className="font-medium">{bloque.bloques_horario.ramos.ramo}</div>
-                              <div className="text-gray-500">
-                                {bloque.bloques_horario.sala} - Grupo {bloque.bloques_horario.grupo}<br></br>
-                                {bloque.bloques_horario.profesor} {bloque.bloques_horario.dia}
-                              </div>
-                            </div>
-                            )}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                            {bloque.bloques_horario.dia === 'Viernes' && (
-                              <div>
-                              <div className="font-medium">{bloque.bloques_horario.ramos.ramo}</div>
-                              <div className="text-gray-500">
-                                {bloque.bloques_horario.sala} - Grupo {bloque.bloques_horario.grupo}<br></br>
-                                {bloque.bloques_horario.profesor} {bloque.bloques_horario.dia}
-                              </div>
-                            </div>
-                            )}
-                          </td>
+                          ))}
                         </tr>
                       )
                     }
