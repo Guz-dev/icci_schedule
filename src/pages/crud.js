@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useModal } from 'context/ModalContext';
+import { insertBloque,deleteBloque } from "./api/supabaseClient";
 
 export default function Home({ bloques }) {
 
@@ -12,13 +13,21 @@ export default function Home({ bloques }) {
 
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Bloque','Dia','Asignatura','Grupo','Profesor','Sala','']
+  const bloqueData = ["Nombre de asignatura", "Grupo", "Profesor", "Sala"]
+
   const { setModal } = useModal()
 
   const [semestre,setSemestre] = useState(1)
-
   const [selectedIndex, setSelectedIndex] = useState(0)
 
-  console.log(bloques);
+  const [name,setName] = useState(null)
+  const [day,setDay] = useState(null)
+  const [subject,setSubject] = useState(null)
+  const [group,setGroup] = useState(null)
+  const [teacher,setTeacher] = useState(null)
+  const [room,setRoom] = useState(null)
+
+  //console.log(bloques);
   
   return (
     <>
@@ -38,12 +47,12 @@ export default function Home({ bloques }) {
           onClick={() => { 
           setModal(
             <div className="flex flex-col justify-center items-center w-[350px] h-[350px] border-amber-400 border-4 rounded-md">
-              {["Nombre de asignatura", "Grupo", "Profesor", "Sala"].map((placeholder, index) => (
-                <input key={index}className="my-2 w-72 border p-2 bg-[#17286b] hover:bg-[#27356b] px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="text"
+              {bloqueData.map((placeholder, index) => (
+                <input key={index} className="my-2 w-72 border p-2 bg-[#17286b] hover:bg-[#27356b] px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="text"
                   placeholder={placeholder}/>
               ))}
               <div className="flex flex-col sm:flex-row justify-center items-center">
-                <button className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
+                <button onClick={insertBloque} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
                 <button onClick={() => {setModal(false)}} className="w-32 text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300 ">Salir</button>
               </div>
             </div>)}}
