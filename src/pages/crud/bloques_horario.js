@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useModal } from 'context/ModalContext';
-import { insertBloque,deleteBloque } from "./api/supabaseClient";
+import { insertBloque,deleteBloque } from "../api/supabaseClient";
 
 export default function Home({ bloques }) {
 
@@ -18,8 +18,7 @@ export default function Home({ bloques }) {
   const { setModal } = useModal()
 
   const [semestre,setSemestre] = useState(1)
-  const [selectedIndex, setSelectedIndex] = useState(0)
-
+ 
   const [name,setName] = useState(null)
   const [day,setDay] = useState(null)
   const [subject,setSubject] = useState(null)
@@ -38,7 +37,7 @@ export default function Home({ bloques }) {
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
             return (
-              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
+              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === semestre -1  ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
             )
           })}
       </ul>
