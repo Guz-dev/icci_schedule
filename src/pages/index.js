@@ -10,21 +10,17 @@ export default function Home({ bloques }) {
   console.log(bloques);
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Clave Hora','Lunes','Martes','Miercoles','Jueves','Viernes']
+
   const horas = [['8:00','9:30'],['9:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
   const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
+
 
   const [semestre,setSemestre] = useState(1)
 
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   
-  /* bloques.map((bloque,index)=>{
-    return(
-      <div key={index}>
 
-      </div>
-    )
-  }) */
   return (
     <>
       <div className={styles.container}>
@@ -56,6 +52,7 @@ export default function Home({ bloques }) {
                   })}
                   </tr>
                   </thead>
+
                   <tbody className="">
 
 
