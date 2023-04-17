@@ -1,5 +1,3 @@
-import { supabase } from "./supabaseClient"
-
 const PORT = 3001
 const ADDRESS = 'localhost'
 const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
