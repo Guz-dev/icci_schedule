@@ -2,7 +2,7 @@ import { supabase } from "./supabaseClient"
 
 const DIAS = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
 
-export default async function handler(req, res) {  
+export default async function semestre_api(req, res) {  
 
   const { data } = await supabase.from('semestres')
               .select(`semestre, 
@@ -16,4 +16,21 @@ export default async function handler(req, res) {
   })
 
   res.status(200).json({ data })
+}
+
+export async function get_semestre(sem){
+  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
+      .then((res) => {            
+      return res.json()
+    })
+
+  const semestre = () => {
+    
+    return semestreData
+  }
+  return {
+    props:{
+        semestre: semestreData
+    }
+  }
 }
