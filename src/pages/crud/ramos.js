@@ -3,22 +3,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useModal } from 'context/ModalContext';
+import { get_ramos } from "../api/middleware_api"; 
 
-export default function Home({ bloques }) {
+export default function Home({ ramos }) {
 
-  const dias = [
-    'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'
-  ]
 
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
-  const tablTh = ['Bloque','Dia','Asignatura','Grupo','Profesor','Sala','']
+  const tablTh = ['Id','Ramo','Codigo','Semestre',"Accion"]
+  const ramoData = ["id","ramo", "codigo","semestre"]
+
   const { setModal } = useModal()
 
   const [semestre,setSemestre] = useState(1)
 
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [ramo,setRamo] = useState(null)
+  const [codigo,setCodigo] = useState(null)
+  
 
-  console.log(bloques);
+
+  //console.log(bloques);
   
   return (
     <>
@@ -29,7 +32,7 @@ export default function Home({ bloques }) {
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
             return (
-              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
+              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === semestre - 1 ? '#17286b' : ''}} onClick={() => {setSemestre(index+1);}}>{sem}</button></li>
             )
           })}
       </ul>
@@ -38,12 +41,12 @@ export default function Home({ bloques }) {
           onClick={() => { 
           setModal(
             <div className="flex flex-col justify-center items-center w-[350px] h-[350px] border-amber-400 border-4 rounded-md">
-              {["Nombre de asignatura", "Grupo", "Profesor", "Sala"].map((placeholder, index) => (
-                <input key={index}className="my-2 w-72 border p-2 bg-[#17286b] hover:bg-[#27356b] px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="text"
+              {ramoData.map((placeholder, index) => (
+                <input key={index} className="my-2 w-72 border p-2 bg-[#17286b] hover:bg-[#27356b] px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="text"
                   placeholder={placeholder}/>
               ))}
               <div className="flex flex-col sm:flex-row justify-center items-center">
-                <button className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
+                <button onClick={insertBloque} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
                 <button onClick={() => {setModal(false)}} className="w-32 text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300 ">Salir</button>
               </div>
             </div>)}}
@@ -62,28 +65,17 @@ export default function Home({ bloques }) {
                   </tr>
                 </thead>
                 <tbody className="bg-gray-100">
-                  {bloques.map((bloque,index) => {
-                    if (bloque.semestre===semestre) {
-                      return (  
+                  {ramos.map((ramo,index) => {
+                    if (ramo.semestre===semestre) {
+                      return (                        
                         <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-900 border-r border-solid border-gray-700">
-                            {bloque.bloques_horario.bloques_horas.inicio} - {bloque.bloques_horario.bloques_horas.termino} 
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-900 border-r border-solid border-gray-700">
-                            {bloque.bloques_horario.dia}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                            semestre {bloque.semestre} id ramo {bloque.bloques_horario.ramos.ramo}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                          {bloque.bloques_horario.grupo}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                          {bloque.bloques_horario.profesor}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                            {bloque.bloques_horario.sala}
-                          </td>
+                            {ramoData.map((data,index) => {
+                                return(
+                                <td key={index} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-900 border-r border-solid border-gray-700">
+                                    {ramo[data]}
+                                </td>)
+                            })}
+                            
                           <td className="text-sm px-6 py-4 whitespace-nowrap text-center font-thin">
                             <a href="#" className="text-base bg-blue-500 p-2 rounded-l text-center font-bold text-white hover:text-amber-300">Editar</a>
                             <a href="#" className="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</a>
@@ -108,14 +100,11 @@ export default function Home({ bloques }) {
 
 
 export async function getStaticProps(){
+    const { ramos } = await get_ramos()
 
-  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
-      .then((res) => {            
-      return res.json()
-    })
-  return {
-    props:{
-        bloques: data
+    return {
+        props:{
+            ramos
+        }
     }
-  }
 }
