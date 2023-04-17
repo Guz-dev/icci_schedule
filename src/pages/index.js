@@ -36,19 +36,19 @@ export default function Home({ bloques }) {
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
             return (
-              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
+              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
             )
           })}
           
         </ul>
-        {/* <Link href="crud" class="pl-10">Ir al crud</Link> */}
-        <div class="flex flex-col">
-          <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
-            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-              <div class="overflow-hidden bg-gray-100 rounded-2xl p-2 shadow-md">
-                <table class="min-w-full">
-                  {/* <thead class="bg-gray-200 border-b"> */}
-                  <thead class="bg-[#17286b] border-b border-gray-100 text-white">
+        {/* <Link href="crud" className="pl-10">Ir al crud</Link> */}
+        <div className="flex flex-col">
+          <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="overflow-hidden bg-gray-100 rounded-2xl p-2 shadow-md">
+                <table className="min-w-full">
+                  {/* <thead className="bg-gray-200 border-b"> */}
+                  <thead className="bg-[#17286b] border-b border-gray-100 text-white">
                   <tr>
                   {tablTh.map((tabl,index) => {
                     return (
@@ -56,7 +56,7 @@ export default function Home({ bloques }) {
                   })}
                   </tr>
                   </thead>
-                  <tbody class="">
+                  <tbody className="">
 
 
 
