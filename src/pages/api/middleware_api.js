@@ -12,7 +12,7 @@ export default async function middleware_api(req, res) {
 }
 
 export async function get_ramos(){
-    const { data } = await fetch(`${MIDDLEWARE_API}/ramos`)
+    const { data } = await fetch(`${MIDDLEWARE_API}/get/ramos`)
             .then((res) => { return res.json() })
             
     return {
