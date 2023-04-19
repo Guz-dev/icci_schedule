@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useModal } from 'context/ModalContext';
-import { insertBloque,deleteBloque } from "../api/supabaseClient";
 
 export default function Home({ bloques }) {
 
@@ -51,7 +50,7 @@ export default function Home({ bloques }) {
                   placeholder={placeholder}/>
               ))}
               <div className="flex flex-col sm:flex-row justify-center items-center">
-                <button onClick={insertBloque} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
+                <button onClick={()=> console.log("agrego")} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
                 <button onClick={() => {setModal(false)}} className="w-32 text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300 ">Salir</button>
               </div>
             </div>)}}
