@@ -12,7 +12,7 @@ export default async function middleware_api(req, res) {
 }
 
 export async function get_ramos(){
-    const { data } = await fetch(`${MIDDLEWARE_API}/get/ramos`)
+    const { data } = await fetch(`${MIDDLEWARE_API}/tables/ramos`)
             .then((res) => { return res.json() })
             
     return {
@@ -20,22 +20,22 @@ export async function get_ramos(){
     }
 }
 
-export async function insertRamo({id, ramo, codigo, semestre}){
+export const insertRamo = async (id, ramo, codigo, semestre) => {
     //with post
     console.log(id, ramo, codigo, semestre);
 
-    const response = await fetch(`${MIDDLEWARE_API}/insertRamo`, {
+    const { data } = await fetch(`${MIDDLEWARE_API}/insertRamo`, {
         method: 'POST',
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        body:   {
             id: id,
             ramo: ramo,
             codigo: codigo,
             semestre: semestre
-        })
+        }
     })
     .then((res) => res )
     .then((message) => { return message })
