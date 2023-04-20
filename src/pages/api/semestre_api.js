@@ -5,7 +5,7 @@ const DIAS = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
 export default async function semestre_api(req, res) {  
 
   const { data } = await supabase.from('semestres')
-              .select(`semestre, 
+    .select(`semestre, 
               bloques_horario( profesor, sala, grupo, dia,
                 ramos( ramo ),
                 bloques_horas( inicio, termino )
@@ -20,7 +20,7 @@ export default async function semestre_api(req, res) {
 
 export async function get_semestre(sem){
   const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
-      .then((res) => {            
+    .then((res) => {            
       return res.json()
     })
 
@@ -30,7 +30,7 @@ export async function get_semestre(sem){
   }
   return {
     props:{
-        semestre: semestreData
+      semestre: semestreData
     }
   }
 }

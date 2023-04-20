@@ -4,41 +4,47 @@ const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
 
 export default async function middleware_api(req, res) {  
 
-    const { data } = await fetch(MIDDLEWARE_API)
-            .then((res) => { return res.json() })
+  const { data } = await fetch(MIDDLEWARE_API)
+    .then((res) => { return res.json() })
 
     
-    res.send({data})
+  res.send({data})
 }
 
 export async function get_ramos(){
-    const { data } = await fetch(`${MIDDLEWARE_API}/tables/ramos`)
-            .then((res) => { return res.json() })
+  const { data } = await fetch(`${MIDDLEWARE_API}/tables/ramos`)
+    .then((res) => { return res.json() })
             
-    return {
-        ramos: data
-    }
+  return {
+    ramos: data
+  }
 }
 
 export const insertRamo = async (id, ramo, codigo, semestre) => {
-    //with post
-    console.log(id, ramo, codigo, semestre);
+  //with post
+  console.log(id, ramo, codigo, semestre);
 
-    const { data } = await fetch(`${MIDDLEWARE_API}/insertRamo`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body:   {
-            id: id,
-            ramo: ramo,
-            codigo: codigo,
-            semestre: semestre
-        }
+  try{
+    const response = await fetch(`${MIDDLEWARE_API}/api/insertRamo`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: id,
+        ramo: ramo,
+        codigo: codigo,
+        semestre: semestre
+      })
     })
-    .then((res) => res )
-    .then((message) => { return message })
-    .catch((error) => { console.log(error) })
+
+    if (!response.ok) {
+      throw new Error(response.statusText)
+    }
+
+    console.log(response);
+  }
+  catch(e){
+    console.log(e);
+  }
 
 }

@@ -33,27 +33,27 @@ export default function Home({ bloques }) {
         <title> UTA ICCI - MODIFICACION DE HORARIO </title>
       </Head>
       <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
-          <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
-          {semSym.map((sem,index) => {
-            return (
-              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === semestre -1  ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
-            )
-          })}
+        <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
+        {semSym.map((sem,index) => {
+          return (
+            <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === semestre -1  ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
+          )
+        })}
       </ul>
       <div className="flex flex-col">
         <label className="ml-auto mr-8 w-32 p-2 rounded text-center text-white text-base font-bold cursor-pointer bg-emerald-500 hover:text-amber-300"
           onClick={() => { 
-          setModal(
-            <div className="flex flex-col justify-center items-center w-[350px] h-[350px] border-amber-400 border-4 rounded-md">
-              {bloqueData.map((placeholder, index) => (
-                <input key={index} className="my-2 w-72 border p-2 bg-[#17286b] hover:bg-[#27356b] px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="text"
-                  placeholder={placeholder}/>
-              ))}
-              <div className="flex flex-col sm:flex-row justify-center items-center">
-                <button onClick={()=> console.log("agrego")} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
-                <button onClick={() => {setModal(false)}} className="w-32 text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300 ">Salir</button>
-              </div>
-            </div>)}}
+            setModal(
+              <div className="flex flex-col justify-center items-center w-[350px] h-[350px] border-amber-400 border-4 rounded-md">
+                {bloqueData.map((placeholder, index) => (
+                  <input key={index} className="my-2 w-72 border p-2 bg-[#17286b] hover:bg-[#27356b] px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="text"
+                    placeholder={placeholder}/>
+                ))}
+                <div className="flex flex-col sm:flex-row justify-center items-center">
+                  <button onClick={()=> console.log("agrego")} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
+                  <button onClick={() => {setModal(false)}} className="w-32 text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300 ">Salir</button>
+                </div>
+              </div>)}}
         >Agregar</label>
         <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -62,10 +62,10 @@ export default function Home({ bloques }) {
                 {/* <thead className="bg-gray-200 border-b"> */}
                 <thead className="bg-[#17286b] border-b border-gray-100 text-white">
                   <tr>
-                  {tablTh.map((tabl,index) => {
-                    return (
-                    <th key={index} scope="col" className="text-sm font-bold px-6 py-4 text-center border-r border-solid">{tabl}</th>)
-                  })}
+                    {tablTh.map((tabl,index) => {
+                      return (
+                        <th key={index} scope="col" className="text-sm font-bold px-6 py-4 text-center border-r border-solid">{tabl}</th>)
+                    })}
                   </tr>
                 </thead>
                 <tbody className="bg-gray-100">
@@ -83,10 +83,10 @@ export default function Home({ bloques }) {
                             semestre {bloque.semestre} id ramo {bloque.bloques_horario.ramos.ramo}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                          {bloque.bloques_horario.grupo}
+                            {bloque.bloques_horario.grupo}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
-                          {bloque.bloques_horario.profesor}
+                            {bloque.bloques_horario.profesor}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
                             {bloque.bloques_horario.sala}
@@ -117,12 +117,12 @@ export default function Home({ bloques }) {
 export async function getStaticProps(){
 
   const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
-      .then((res) => {            
+    .then((res) => {            
       return res.json()
     })
   return {
     props:{
-        bloques: data
+      bloques: data
     }
   }
 }

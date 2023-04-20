@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useModal } from 'context/ModalContext';
 import { get_ramos } from "../api/middleware_api"; 
-import RamosForm from "components/ramosForm";
+import RamosForm from "@/components/RamosForm";
 
 export default function Home({ ramos }) {
 
@@ -30,7 +30,7 @@ export default function Home({ ramos }) {
   const [semestre_inp,setSemestre_inp] = useState("")
    */
   //const inputSetters = [setId,setRamo,setCodigo,setSemestre_inp]
-/*   const placeholders = ["Id","Ramo","Codigo","Semestre"]
+  /*   const placeholders = ["Id","Ramo","Codigo","Semestre"]
  */
 
   //console.log(bloques);
@@ -41,26 +41,26 @@ export default function Home({ ramos }) {
         <title> UTA ICCI - MODIFICACION DE HORARIO </title>
       </Head>
       <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
-          <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
-          {semSym.map((sem,index) => {
-            return (
-              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === semestre - 1 ? '#17286b' : ''}} onClick={() => {setSemestre(index+1);}}>{sem}</button></li>
-            )
-          })}
+        <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
+        {semSym.map((sem,index) => {
+          return (
+            <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === semestre - 1 ? '#17286b' : ''}} onClick={() => {setSemestre(index+1);}}>{sem}</button></li>
+          )
+        })}
       </ul>
       <div className="flex flex-col">
         <label className="ml-auto mr-8 w-32 p-2 rounded text-center text-white text-base font-bold cursor-pointer bg-emerald-500 hover:text-amber-300"
           onClick={() => { 
-          setModal(
-            <div className="flex flex-col justify-center items-center w-[350px] h-[350px] border-amber-400 border-4 rounded-md">
-              <RamosForm />
+            setModal(
+              <div className="flex flex-col justify-center items-center w-[350px] h-[350px] border-amber-400 border-4 rounded-md">
+                <RamosForm />
               
-              {/* inputSetters.map(( setData, index) => (
+                {/* inputSetters.map(( setData, index) => (
                 <input key={index} onChange={(e) => {setData(e.target.value); console.log(id);}} className="my-2 w-72 border p-2 bg-[#17286b] hover:bg-[#27356b] px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="text"
                   placeholder={placeholders[index]}/>
               )) */}
 
-            </div>)}}
+              </div>)}}
         >Agregar</label>
         <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -69,10 +69,10 @@ export default function Home({ ramos }) {
                 {/* <thead className="bg-gray-200 border-b"> */}
                 <thead className="bg-[#17286b] border-b border-gray-100 text-white">
                   <tr>
-                  {tablTh.map((tabl,index) => {
-                    return (
-                    <th key={index} scope="col" className="text-sm font-bold px-6 py-4 text-center border-r border-solid">{tabl}</th>)
-                  })}
+                    {tablTh.map((tabl,index) => {
+                      return (
+                        <th key={index} scope="col" className="text-sm font-bold px-6 py-4 text-center border-r border-solid">{tabl}</th>)
+                    })}
                   </tr>
                 </thead>
                 <tbody className="bg-gray-100">
@@ -80,12 +80,12 @@ export default function Home({ ramos }) {
                     if (ramo.semestre===semestre) {
                       return (                        
                         <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                            {ramoData.map((data,index) => {
-                                return(
-                                <td key={index} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-900 border-r border-solid border-gray-700">
-                                    {ramo[data]}
-                                </td>)
-                            })}
+                          {ramoData.map((data,index) => {
+                            return(
+                              <td key={index} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-900 border-r border-solid border-gray-700">
+                                {ramo[data]}
+                              </td>)
+                          })}
                             
                           <td className="text-sm px-6 py-4 whitespace-nowrap text-center font-thin">
                             <a href="#" className="text-base bg-blue-500 p-2 rounded-l text-center font-bold text-white hover:text-amber-300">Editar</a>
@@ -111,11 +111,11 @@ export default function Home({ ramos }) {
 
 
 export async function getStaticProps(){
-    const { ramos } = await get_ramos()
+  const { ramos } = await get_ramos()
 
-    return {
-        props:{
-            ramos
-        }
+  return {
+    props:{
+      ramos
     }
+  }
 }
