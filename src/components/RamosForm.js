@@ -31,7 +31,7 @@ export default function RamosForm({ params }) {
         placeholder={placeholders[3]}/>
 
       <div className="flex flex-col sm:flex-row justify-center items-center">
-        <button onClick={() => insertRamo(id,ramo,codigo,semestre)} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
+        <button onClick={() => {insertRamo(id,ramo,codigo,semestre);  setModal(false);}} className="p-2 w-32 text-base bg-blue-500 rounded-l text-center font-bold text-white hover:text-amber-300">Añadir</button>
         <button onClick={() => setModal(false)} className="w-32 text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300 ">Salir</button>
       </div>
     </>

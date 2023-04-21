@@ -1,5 +1,5 @@
 const PORT = 3001
-const ADDRESS = 'localhost'
+const ADDRESS = '192.168.0.13'
 const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
 
 export default async function middleware_api(req, res) {  
@@ -24,27 +24,22 @@ export const insertRamo = async (id, ramo, codigo, semestre) => {
   //with post
   console.log(id, ramo, codigo, semestre);
 
-  try{
-    const response = await fetch(`${MIDDLEWARE_API}/api/insertRamo`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id: id,
-        ramo: ramo,
-        codigo: codigo,
-        semestre: semestre
-      })
+
+  const response = await fetch(`${MIDDLEWARE_API}/api/insertRamo`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      id: id,
+      ramo: ramo,
+      codigo: codigo,
+      semestre: semestre
     })
+  }).then((res) => { return res.json() })
+    .then((data) => { return data })
+    .catch((err) => { return err })
 
-    if (!response.ok) {
-      throw new Error(response.statusText)
-    }
 
-    console.log(response);
-  }
-  catch(e){
-    console.log(e);
-  }
+
 
 }
