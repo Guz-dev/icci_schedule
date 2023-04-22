@@ -1,5 +1,5 @@
 const PORT = 3001
-const ADDRESS = '192.168.0.13'
+const ADDRESS = 'localhost'
 const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
 
 export default async function middleware_api(req, res) {  
@@ -38,8 +38,5 @@ export const insertRamo = async (id, ramo, codigo, semestre) => {
   }).then((res) => { return res.json() })
     .then((data) => { return data })
     .catch((err) => { return err })
-
-
-
 
 }
