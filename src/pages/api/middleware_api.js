@@ -1,5 +1,5 @@
 const PORT = 3001
-const ADDRESS = '192.168.0.13'
+const ADDRESS = 'localhost'
 const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
 
 export default async function middleware_api(req, res) {  
@@ -38,8 +38,47 @@ export const insertRamo = async (id, ramo, codigo, semestre) => {
   }).then((res) => { return res.json() })
     .then((data) => { return data })
     .catch((err) => { return err })
+}
 
+export const deleteRamo = async (id) => {
+  const response = await fetch(`${MIDDLEWARE_API}/api/deleteRamo`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      id: id
+    })
+  }).then((res) => { return res.json() })
+    .then((data) => { return data })
+    .catch((err) => { return err })
+}
 
+export const updateRamo = async (id, ramo, codigo, semestre) => {
+  const response = await fetch(`${MIDDLEWARE_API}/api/updateRamo`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      id: id,
+      ramo: ramo,
+      codigo: codigo,
+      semestre: semestre
+    })
+  }).then((res) => { return res.json() })
+    .then((data) => { return data })
+    .catch((err) => { return err })
+}
 
-
+export const authUser = async (email, password) => {
+  const response = await fetch(`${MIDDLEWARE_API}/api/authUser`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
+  }).then((res) => { return res.json() })
+    .then((data) => { return data })
+    .catch((err) => { return err })
 }

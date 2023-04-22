@@ -3,20 +3,14 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
+import { authUser } from "./api/middleware_api";
+import { useState } from "react"
 
 export default function Home() {
-  // El login es nombre: admin, password: 123
-  function login(){
-    let user = document.getElementById("name").value;
-    let passcode = document.getElementById("pass").value;
 
-    if (user == "admin" && passcode == "123"){
-      window.location="crud";
-    }
-    else{
-      alert("Datos incorrectos");
-    }
-  }
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+
   return (
     <>
       <Head>
@@ -30,11 +24,20 @@ export default function Home() {
           <div class="font-sans font-bold text-center text-lg">Inicie sesion<div class="text-base">para administrar el horario</div></div>
         </div>
         <div class="flex flex-col items-center">
-          <input class="my-2 w-72 border p-2 rounded-3xl bg-[#17286b] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="nombre" id="name" placeholder="Nombre de usuario" />
-          <input class="my-2 w-72 border p-2 rounded-3xl bg-[#17286b] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" type="password" id="pass" placeholder="Contraseña" />
+          <input 
+            class="my-2 w-72 border p-2 rounded-3xl bg-[#17286b] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" 
+            type="email" id="email" placeholder="Email" 
+            onChange={(e) => {setEmail(e.target.value)}}  
+          />
+          
+          <input 
+            class="my-2 w-72 border p-2 rounded-3xl bg-[#17286b] bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg border-none" 
+            type="password" id="pass" placeholder="Contraseña" 
+            onChange={(e) => {setPassword(e.target.value)}}  
+          />
         </div>
         <div class="mt-2 flex justify-center">
-          <a class="w-72 text-center border rounded bg-[#17286b] p-2 font-sans text-amber-300 text-m font-bold hover:bg-amber-300 hover:text-black hover:delay-75" onClick={login}>Iniciar sesion</a>
+          <a class="cursor-pointer w-72 text-center border rounded bg-[#17286b] p-2 font-sans text-amber-300 text-m font-bold hover:bg-amber-300 hover:text-black hover:delay-75" onClick={() => authUser(email,password)}>Iniciar sesion</a>
         </div>
         <Link href="/" class="item-center text-sm flex justify-center pt-2 mb-2 hover:text-base hover:font-bold ">
           Volver al horario
