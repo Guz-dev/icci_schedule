@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { useState } from "react";
-import Bloque_horario from "components/bloque_horario";
+import Bloque_horario from "@/components/bloque_horario";
 
 export default function Home({ bloques }) {
 
@@ -45,39 +45,39 @@ export default function Home({ bloques }) {
                 <table className="min-w-full">
                   {/* <thead className="bg-gray-200 border-b"> */}
                   <thead className="bg-[#17286b] border-b border-gray-100 text-white">
-                  <tr>
-                  {tablTh.map((tabl,index) => {
-                    return (
-                    <th key={index} scope="col" className="text-sm font-bold px-6 py-4 text-center border-r border-solid">{tabl}</th>)
-                  })}
-                  </tr>
+                    <tr>
+                      {tablTh.map((tabl,index) => {
+                        return (
+                          <th key={index} scope="col" className="text-sm font-bold px-6 py-4 text-center border-r border-solid">{tabl}</th>)
+                      })}
+                    </tr>
                   </thead>
 
                   <tbody className="">
 
 
 
-                  {horas.map((hora,index) => {
-                    return(
-                      <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-200">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
-                          {hora[0]} - {hora[1]}
-                        </td>
+                    {horas.map((hora,index) => {
+                      return(
+                        <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-200">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
+                            {hora[0]} - {hora[1]}
+                          </td>
 
-                        {dias.map((dia,index) => {
-                          return(
-                            <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                              <Bloque_horario params={{semestre,hora,dia}}/>
-                            </td>
-                          )
-                        })}
+                          {dias.map((dia,index) => {
+                            return(
+                              <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
+                                <Bloque_horario params={{semestre,hora,dia}}/>
+                              </td>
+                            )
+                          })}
 
 
-                      </tr>
-                    )
-                  })}
+                        </tr>
+                      )
+                    })}
 
-                  {/* {horas.map((hora,index) => {
+                    {/* {horas.map((hora,index) => {
                     var j = 0
                     return(
                       <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-200">
@@ -124,14 +124,14 @@ export default function Home({ bloques }) {
 export async function getStaticProps(){
 
   const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
-                        .then((res) => {            
-                        return res.json()
-                      })
+    .then((res) => {            
+      return res.json()
+    })
   
   return {
-      props:{
-          bloques: data
-      }
+    props:{
+      bloques: data
+    }
   }
 }
 
