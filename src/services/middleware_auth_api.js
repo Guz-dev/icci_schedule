@@ -1,5 +1,4 @@
-import { JWS } from "node-jose"
-
+import Jwt from "jsonwebtoken"
 
 const PORT = 3001
 const ADDRESS = 'localhost'
@@ -9,15 +8,9 @@ const secret_key = process.env.NEXT_PUBLIC_AUTH_KEY
 export const authUser = async (email, password) => {
   const payload = { "email": email, "password": password }
 
-  JWS.createSign({ format: 'flattened' }, secret_key).
-    update(JSON.stringify(payload), 'utf8').
-    final().
-    then((result) => {
-      console.log(result);
-      return result
-    })
+  console.log(secret_key);
+  const token = Jwt.sign(payload, secret_key)
   
-
   console.log(token);
 /* 
   const response = await fetch(`${MIDDLEWARE_API}/api/authUser`, {

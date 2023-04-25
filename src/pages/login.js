@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { authUser } from "./api/middleware_auth_api";
+import { authUser } from "@/services/middleware_auth_api";
 
 export default function Home() {
 
