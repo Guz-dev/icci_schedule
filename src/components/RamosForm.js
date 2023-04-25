@@ -1,4 +1,4 @@
-import { insertRamo } from "@/pages/api/middleware_db_api";
+import { insertRamo } from "@/services/middleware_db";
 import { useModal } from "context/ModalContext";
 
 export default function RamosForm() {

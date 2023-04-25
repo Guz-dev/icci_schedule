@@ -1,15 +1,25 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { authUser } from "@/services/middleware_auth_api";
+import { redirect } from "next/navigation";
+import { authUser } from "@/services/auth";
+import { useRouter } from "next/router"
 
 export default function Home() {
 
+  let router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = Object.fromEntries(new FormData(e.target));
     console.log(email, password);
-    authUser(email, password);
+    if (authUser(email, password) === true) {
+      console.log("Login success");
+      router.push("/crud/ramos");
+    } else {
+      console.log("Login failed");
+    }
+
+
   }
 
   const inputsForm = ["email", "password"]

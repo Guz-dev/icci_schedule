@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useModal } from 'context/ModalContext';
-import { get_ramos } from "../api/middleware_db_api"; 
+import { get_data_table } from "../../services/middleware_db"; 
 import RamosForm from "@/components/RamosForm";
+import { isAuthenticated } from "@/services/auth"
 
 export default function Home({ ramos }) {
 
@@ -17,6 +18,11 @@ export default function Home({ ramos }) {
 
   const [semestre,setSemestre] = useState(1)
   
+  useEffect(() => {
+    console.log(isAuthenticated());
+  }, []);
+  
+
   return (
     <>
       <Head>
@@ -87,11 +93,11 @@ export default function Home({ ramos }) {
 
 
 export async function getStaticProps(){
-  const { ramos } = await get_ramos()
+  const { data } = await get_data_table('ramos')
 
   return {
     props:{
-      ramos
+      ramos: data
     }
   }
 }

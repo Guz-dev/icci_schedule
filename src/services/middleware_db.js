@@ -2,12 +2,11 @@ const PORT = 3001
 const ADDRESS = 'localhost'
 const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
 
-export async function get_ramos(){
-  const { data } = await fetch(`${MIDDLEWARE_API}/tables/ramos`)
-    .then((res) => { return res.json() })
-            
+export async function get_data_table(table){
+  const { data } = await fetch(`${MIDDLEWARE_API}/tables/${table}`)
+    .then((res) => {return res.json()})
   return {
-    ramos: data
+    data
   }
 }
 
