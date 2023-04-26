@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useModal } from 'context/ModalContext';
 import { isAuthenticated } from "@/services/auth"
 import { useRouter } from "next/router";
+import { get_data_table } from "@/services/middleware_db"
 
 export default function Home({ bloques }) {
 
@@ -140,7 +141,7 @@ export default function Home({ bloques }) {
 
 export async function getStaticProps(){
 
-  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
+  const { data } = await get_data_table('bloques_horario')
     .then((res) => {            
       return res.json()
     })

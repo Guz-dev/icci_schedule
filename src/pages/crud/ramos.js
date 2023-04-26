@@ -1,19 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useModal } from 'context/ModalContext';
 import { get_data_table } from "../../services/middleware_db"; 
 import RamosForm from "@/components/RamosForm";
 import { isAuthenticated } from "@/services/auth"
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 
 export default function Home({ ramos }) {
 
 
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
-  const tablTh = ['Id','Ramo','Codigo','Semestre',"Accion"]
-  const ramoData = ["id","ramo", "codigo","semestre"]
+  const tablTh = ['ID','Ramo','Codigo','Semestre',"Accion"]
+  const ramoData = ['id','ramo', 'codigo','semestre']
  
   const { setModal } = useModal()
 
@@ -30,14 +30,17 @@ export default function Home({ ramos }) {
     console.log("Error al obtener token");    
   }
 
-  isAuthenticated(token).then(res => {
-    console.log(res);
-    if (res == false) {
-      router.push("/login");
-    } else{
-      setAuth(true);
-    }
-  })
+  useEffect(() => {
+    isAuthenticated(token).then(res => {
+      console.log(res);
+      if (res == false || res == null) {
+        console.log("No autenticado");
+        router.push("/login");
+      } else{
+        setAuth(true);
+      }
+    })
+  },[router,token])
      
 
   return (
