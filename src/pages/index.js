@@ -4,6 +4,7 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import Bloque_horario from "@/components/bloque_horario";
+import { get_data_table } from "@/services/middleware_db"
 
 export default function Home({ bloques }) {
 
@@ -80,10 +81,7 @@ export default function Home({ bloques }) {
 
 export async function getStaticProps(){
 
-  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
-    .then((res) => {            
-      return res.json()
-    })
+  const { data } = await get_data_table('bloques_horario')
   
   return {
     props:{
