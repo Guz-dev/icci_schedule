@@ -1,9 +1,8 @@
 import Jwt from "jsonwebtoken"
 import { useEffect } from "react"
 
-const PORT = 3002
 const ADDRESS = process.env.NEXT_PUBLIC_AUTH_ADDRESS
-const AUTH_SERVER = `http://${ADDRESS}:${PORT}`
+const AUTH_SERVER = `http://${ADDRESS}`
 const secret_key = process.env.NEXT_PUBLIC_AUTH_KEY
 
 export const authUser = async (email, password) => {
