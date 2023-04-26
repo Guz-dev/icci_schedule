@@ -1,6 +1,6 @@
 const PORT = 3001
 const ADDRESS = process.env.NEXT_PUBLIC_ADDRESS_MIDDLEWARE
-const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
+const MIDDLEWARE_API = `http://${ADDRESS}`
 
 export async function get_data_table(table){
   const { data } = await fetch(`${MIDDLEWARE_API}/tables/${table}`)
