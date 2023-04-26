@@ -10,9 +10,9 @@ export const authUser = async (email, password) => {
   const payload = { "email": email, "password": password }
 
   const auth_token = Jwt.sign(payload, secret_key)
-  console.log(auth_token);
+  //console.log(auth_token);
 
-  const { session_token } = await fetch(`${AUTH_SERVER}/auth`, {
+  const { token }= await fetch(`${AUTH_SERVER}/auth`, {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' ,
@@ -23,20 +23,24 @@ export const authUser = async (email, password) => {
   }).then((res) => { return res.json() })
     .then((data) => { return data })
     .catch((err) => { return err })
-  
-  if (session_token){
-    localStorage.setItem("token", session_token)
-    return true
+
+  console.log(token);
+
+  if (token){
+    localStorage.setItem("token", token)
+    return { auth: true, token: token }
   } else {
-    return false
+    return { auth: false, token: null }
   }
 
 }
 
-export const isAuthenticated = () => {  
-  const token = localStorage.getItem("token")
-
-  const { Authenticated } = fetch(`${AUTH_SERVER}/isAuthenticated`, {
+export const isAuthenticated = async(session_token) => {  
+  const token = session_token
+  if (!token) {
+    return false
+  }
+  const { authenticated } = await fetch(`${AUTH_SERVER}/isAuthenticated`, {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' ,
@@ -47,7 +51,7 @@ export const isAuthenticated = () => {
   }).then((res) => { return res.json() })
     .catch((err) => { return err })
 
-  console.log(Authenticated);
-  return Authenticated  
+  console.log("Esta autenticado "+authenticated);
+  return authenticated  
   
 }
