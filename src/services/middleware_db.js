@@ -1,5 +1,5 @@
 const PORT = 3001
-const ADDRESS = 'localhost'
+const ADDRESS = process.env.NEXT_PUBLIC_ADDRESS_MIDDLEWARE
 const MIDDLEWARE_API = `http://${ADDRESS}:${PORT}`
 
 export async function get_data_table(table){
