@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Bloque_horario({ params }) {
-    return (
-        <>
+  return (
+    <>
             Hola {params.hora[0]} {params.dia}
             
 
             
-            {/* {bloque.bloques_horario.dia == dias[j] && (
+      {/* {bloque.bloques_horario.dia == dias[j] && (
             <div>
                 <div className="font-medium">{bloque.bloques_horario.ramos.ramo}</div>
                 <div className="text-gray-500">
@@ -19,8 +19,8 @@ export default function Bloque_horario({ params }) {
                 </div>
             </div>
             )} */}
-        </>
+    </>
       
-      );  
+  );  
       
-    }
+}
