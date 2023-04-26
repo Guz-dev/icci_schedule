@@ -2,15 +2,15 @@ import { insertRamo } from "@/services/middleware_db";
 import { useModal } from "context/ModalContext";
 
 export default function RamosForm() {
-  const ramoData = ["id","ramo", "codigo","semestre"]
+  const ramoData = ["ramo", "codigo","semestre"]
 
-  const placeholders = ["Id","Ramo","Codigo","Semestre"]
+  const placeholders = ["Ramo","Codigo","Semestre"]
   const { setModal } = useModal()
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { id, ramo, codigo, semestre } = Object.fromEntries(new FormData(event.target))
-    insertRamo(id,ramo,codigo,semestre)
+    const { ...data } = Object.fromEntries(new FormData(event.target));
+    insertRamo(data)
     setModal(false)
   }
 

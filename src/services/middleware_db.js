@@ -10,17 +10,13 @@ export async function get_data_table(table){
   }
 }
 
-export const insertRamo = async (id, ramo, codigo, semestre) => {
-  //with post
+export const insertRamo = async (args) => {
   const response = await fetch(`${MIDDLEWARE_API}/api/insertRamo`, {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      id: id,
-      ramo: ramo,
-      codigo: codigo,
-      semestre: semestre
+      data: args
     })
   }).then((res) => { return res.json() })
     .then((data) => { return data })

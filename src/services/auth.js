@@ -2,7 +2,7 @@ import Jwt from "jsonwebtoken"
 import { useEffect } from "react"
 
 const PORT = 3002
-const ADDRESS = 'localhost'
+const ADDRESS = process.env.NEXT_PUBLIC_AUTH_ADDRESS
 const AUTH_SERVER = `http://${ADDRESS}:${PORT}`
 const secret_key = process.env.NEXT_PUBLIC_AUTH_KEY
 
@@ -50,8 +50,7 @@ export const isAuthenticated = async(session_token) => {
     })
   }).then((res) => { return res.json() })
     .catch((err) => { return err })
-
-  console.log("Esta autenticado "+authenticated);
+  
   return authenticated  
   
 }
