@@ -39,14 +39,17 @@ export default function Home({ bloques }) {
     console.log("Error al obtener token");    
   }
   
-  isAuthenticated(token).then(res => {
-    console.log(res);
-    if (res == false) {
-      router.push("/login");
-    } else{
-      setAuth(true);
-    }
-  })
+  useEffect(() => {
+    isAuthenticated(token).then(res => {
+      console.log(res);
+      if (res == false || res == null) {
+        console.log("No autenticado");
+        router.push("/login");
+      } else{
+        setAuth(true);
+      }
+    })
+  },[router,token])
 
   //console.log(bloques);
   
