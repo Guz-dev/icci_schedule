@@ -146,7 +146,7 @@ export async function getStaticProps(){
 
   const { data } = await get_data_table('bloques_horario')
     .then((res) => {            
-      return res.json()
+      return res.data
     })
   return {
     props:{
