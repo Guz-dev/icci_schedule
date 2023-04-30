@@ -3,7 +3,7 @@ const ADDRESS = process.env.NEXT_PUBLIC_ADDRESS_MIDDLEWARE
 const MIDDLEWARE_API = `https://${ADDRESS}`
 
 export async function get_data_table(table){
-  const { data } = await fetch(`${MIDDLEWARE_API}/tables/${table}`)
+  const { data } = await fetch(`${MIDDLEWARE_API}/api/tables/${table}`)
     .then((res) => {return res.json()})
   return {
     data
