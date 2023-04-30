@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useModal } from 'context/ModalContext';
 import { isAuthenticated } from "@/services/auth"
 import { useRouter } from "next/router";
@@ -29,13 +29,13 @@ export default function Home({ bloques }) {
   const [teacher,setTeacher] = useState(null)
   const [room,setRoom] = useState(null)
 
-  const router = useRouter();
-  let token = null;
+  const router = useRouter()
+  let token = null
+
   try{
     token = localStorage.getItem("token");
   }
   catch(err){
-    router.push("/login");
     console.log("Error al obtener token");    
   }
   
@@ -146,8 +146,15 @@ export async function getStaticProps(){
 
   const { data } = await get_data_table('bloques_horario')
     .then((res) => {            
-      return res.data
+      return res
     })
+    .then((data) => {
+      return data
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  console.log(data)
   return {
     props:{
       bloques: data
