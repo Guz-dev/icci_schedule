@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useModal } from 'context/ModalContext';
 import { get_data_table } from "../../services/middleware_db"; 
 import RamosForm from "@/components/RamosForm";
