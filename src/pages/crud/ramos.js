@@ -114,7 +114,7 @@ export default function Home({ ramos }) {
 
 
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
   const { data } = await get_data_table('ramos')
 
   return {

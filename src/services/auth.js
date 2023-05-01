@@ -1,5 +1,4 @@
 import Jwt from "jsonwebtoken"
-import { useEffect } from "react"
 
 const ADDRESS = process.env.NEXT_PUBLIC_AUTH_ADDRESS
 const AUTH_SERVER = `https://${ADDRESS}`
