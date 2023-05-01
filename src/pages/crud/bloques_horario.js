@@ -154,7 +154,6 @@ export async function getStaticProps(){
     .catch((err) => {
       console.log(err);
     })
-  console.log(data)
   return {
     props:{
       bloques: data
