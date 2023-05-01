@@ -11,7 +11,7 @@ export const authUser = async (email, password) => {
   const auth_token = Jwt.sign(payload, secret_key)
   //console.log(auth_token);
 
-  const { token }= await fetch(`${AUTH_SERVER}/auth`, {
+  const { token }= await fetch(`${AUTH_SERVER}/api/auth`, {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' ,
@@ -39,7 +39,7 @@ export const isAuthenticated = async(session_token) => {
   if (!token) {
     return false
   }
-  const { authenticated } = await fetch(`${AUTH_SERVER}/isAuthenticated`, {
+  const { authenticated } = await fetch(`${AUTH_SERVER}/api/isAuthenticated`, {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' ,
