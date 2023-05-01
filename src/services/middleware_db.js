@@ -23,13 +23,13 @@ export const insertRamo = async (args) => {
     .catch((err) => { return err })
 }
 
-export const deleteRamo = async (id) => {
+export const deleteRamo = async (args) => {
   const response = await fetch(`${MIDDLEWARE_API}/api/deleteRamo`, {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      id: id
+      data: args
     })
   }).then((res) => { return res.json() })
     .then((data) => { return data })
