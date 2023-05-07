@@ -36,7 +36,7 @@ export default function Home({ bloques }) {
         <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
         {semSym.map((sem,index) => {
           return (
-            <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === semestre -1  ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
+            <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button class="border-b-4" style={{ borderColor: index === semestre -1  ? '#17286b' : ''}} onClick={() => {setSemestre(index+1);}}>{sem}</button></li>
           )
         })}
       </ul>
@@ -116,7 +116,7 @@ export default function Home({ bloques }) {
 
 export async function getStaticProps(){
 
-  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
+  const { data } = await fetch('http://localhost:3001/')
     .then((res) => {            
       return res.json()
     })

@@ -11,7 +11,7 @@ export default function Home({ bloques }) {
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Clave Hora','Lunes','Martes','Miercoles','Jueves','Viernes']
 
-  const horas = [['8:00','9:30'],['9:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
+  const horas = [['08:00','09:30'],['09:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
   const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 
 
@@ -52,11 +52,10 @@ export default function Home({ bloques }) {
                       })}
                     </tr>
                   </thead>
-
+                  
                   <tbody className="">
-
-
-
+                    
+                    
                     {horas.map((hora,index) => {
                       return(
                         <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-200">
@@ -64,46 +63,28 @@ export default function Home({ bloques }) {
                             {hora[0]} - {hora[1]}
                           </td>
 
-                          {dias.map((dia,index) => {
-                            return(
+                          {dias.map((dia, index) => {
+                            return (
                               <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                                <Bloque_horario params={{semestre,hora,dia}}/>
+                                {bloques.map((bloque, index) => {
+                                  if (bloque.semestre === semestre) {
+                                    return (
+                                      <div key={index}>
+                                        <Bloque_horario params={{semestre,hora,dia}} bloque={bloque} />
+                                      </div>
+                                    );
+                                  }
+                                })}
                               </td>
-                            )
+                            );
                           })}
-
+                          
 
                         </tr>
                       )
                     })}
 
-                    {/* {horas.map((hora,index) => {
-                    var j = 0
-                    return(
-                      <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-200">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
-                          {hora} - {hora}
-                        </td>
-                        {bloques.map((bloque,index)=>{
-                          if (bloque.semestre===semestre) {
-                            return (                                                                                     
-                              <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                                {bloque.bloques_horario.dia == dias[j] && (
-                                <div>
-                                  <div className="font-medium">{bloque.bloques_horario.ramos.ramo}</div>
-                                  <div className="text-gray-500">
-                                    {bloque.bloques_horario.sala} - Grupo {bloque.bloques_horario.grupo}<br></br>
-                                    {bloque.bloques_horario.profesor} {bloque.bloques_horario.dia}
-                                  </div>
-                                </div>
-                                )}
-                              </td>                            
-                            )
-                          }
-                          j = j + 1
-                        })}
-                      </tr>
-                    )})} */}
+
 
                   </tbody>
                 </table>
@@ -123,7 +104,7 @@ export default function Home({ bloques }) {
 
 export async function getStaticProps(){
 
-  const { data } = await fetch('https://icci-schedule.vercel.app/api/semestre_api')
+  const { data } = await fetch('http://localhost:3001/')
     .then((res) => {            
       return res.json()
     })
