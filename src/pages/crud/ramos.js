@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useModal } from 'context/ModalContext';
-import { get_data_table } from "../../services/middleware_db"; 
+import { deleteRamo, get_data_table } from "../../services/middleware_db"; 
 import RamosForm from "@/components/RamosForm";
 import { isAuthenticated } from "@/services/auth"
 import { useRouter } from "next/router"
@@ -92,7 +92,7 @@ export default function Home({ ramos }) {
                             
                             <td className="text-sm px-6 py-4 whitespace-nowrap text-center font-thin">
                               <a href="#" className="text-base bg-blue-500 p-2 rounded-l text-center font-bold text-white hover:text-amber-300">Editar</a>
-                              <a href="#" className="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</a>
+                              <button onClick={() => deleteRamo({'id': ramo.id,"semestre": ramo.semestre})} className="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</button>
                             </td>
                           </tr>
                         );
@@ -114,7 +114,7 @@ export default function Home({ ramos }) {
 
 
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
   const { data } = await get_data_table('ramos')
 
   return {
