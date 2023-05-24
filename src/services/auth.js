@@ -1,7 +1,6 @@
 import Jwt from "jsonwebtoken"
 
-const ADDRESS = process.env.NEXT_PUBLIC_AUTH_ADDRESS
-const AUTH_SERVER = `https://${ADDRESS}`
+const AUTH_SERVER = process.env.NEXT_PUBLIC_AUTH_ADDRESS
 const secret_key = process.env.NEXT_PUBLIC_AUTH_KEY
 
 export const authUser = async (email, password) => {
