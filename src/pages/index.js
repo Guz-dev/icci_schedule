@@ -4,22 +4,19 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import Bloque_horario from "@/components/bloque_horario";
+import { get_data_table } from "@/services/middleware_db"
 
 export default function Home({ bloques }) {
 
-  console.log(bloques);
+  //console.log(bloques);
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Clave Hora','Lunes','Martes','Miercoles','Jueves','Viernes']
 
   const horas = [['08:00','09:30'],['09:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
   const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 
-
   const [semestre,setSemestre] = useState(1)
-
   const [selectedIndex, setSelectedIndex] = useState(0)
-
-  
 
   return (
     <>
@@ -54,8 +51,6 @@ export default function Home({ bloques }) {
                   </thead>
                   
                   <tbody className="">
-                    
-                    
                     {horas.map((hora,index) => {
                       return(
                         <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-200">
@@ -78,14 +73,9 @@ export default function Home({ bloques }) {
                               </td>
                             );
                           })}
-                          
-
                         </tr>
                       )
                     })}
-
-
-
                   </tbody>
                 </table>
               </div>
@@ -94,21 +84,11 @@ export default function Home({ bloques }) {
         </div>
       </div>       
     </>
-
-
   );
-
-  
-  
 }
 
 export async function getStaticProps(){
-
-  const { data } = await fetch('http://localhost:3001/')
-    .then((res) => {            
-      return res.json()
-    })
-  
+  const { data } = await get_data_table('bloques_horario')
   return {
     props:{
       bloques: data
