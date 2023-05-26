@@ -12,7 +12,7 @@ export default function Home({ bloques }) {
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Clave Hora','Lunes','Martes','Miercoles','Jueves','Viernes']
 
-  const horas = [['8:00','9:30'],['9:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
+  const horas = [['08:00','09:30'],['09:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
   const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 
   const [semestre,setSemestre] = useState(1)
@@ -49,7 +49,7 @@ export default function Home({ bloques }) {
                       })}
                     </tr>
                   </thead>
-
+                  
                   <tbody className="">
                     {horas.map((hora,index) => {
                       return(
@@ -58,12 +58,20 @@ export default function Home({ bloques }) {
                             {hora[0]} - {hora[1]}
                           </td>
 
-                          {dias.map((dia,index) => {
-                            return(
+                          {dias.map((dia, index) => {
+                            return (
                               <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                                <Bloque_horario params={{semestre,hora,dia}}/>
+                                {bloques.map((bloque, index) => {
+                                  if (bloque.semestre === semestre) {
+                                    return (
+                                      <div key={index}>
+                                        <Bloque_horario params={{semestre,hora,dia}} bloque={bloque} />
+                                      </div>
+                                    );
+                                  }
+                                })}
                               </td>
-                            )
+                            );
                           })}
                         </tr>
                       )
@@ -80,9 +88,7 @@ export default function Home({ bloques }) {
 }
 
 export async function getStaticProps(){
-
   const { data } = await get_data_table('bloques_horario')
-  
   return {
     props:{
       bloques: data

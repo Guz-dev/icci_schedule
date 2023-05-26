@@ -107,6 +107,7 @@ export default function Home({ bloques }) {
                               {bloque.bloques_horario.dia}
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
+
                             semestre {bloque.semestre} id ramo {bloque.bloques_horario.ramos.ramo}
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-emerald-900">
@@ -143,7 +144,6 @@ export default function Home({ bloques }) {
 
 
 export async function getStaticProps(){
-
   const { data } = await get_data_table('bloques_horario')
     .then((res) => {            
       return res
