@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { useState } from "react";
+import { useModal } from 'context/ModalContext';
 import Bloque_horario from "@/components/bloque_horario";
 
 export default function Home({ bloques }) {
@@ -10,11 +11,11 @@ export default function Home({ bloques }) {
   console.log(bloques);
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Clave Hora','Lunes','Martes','Miercoles','Jueves','Viernes']
-
+  const tablTh2 = ['Asignatura','Grupo','Profesor','Sala','']
   const horas = [['08:00','09:30'],['09:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
   const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 
-
+  const { setModal } = useModal()
   const [semestre,setSemestre] = useState(1)
 
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -65,16 +66,19 @@ export default function Home({ bloques }) {
 
                           {dias.map((dia, index) => {
                             return (
-                              <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700">
-                                {bloques.map((bloque, index) => {
-                                  if (bloque.semestre === semestre) {
-                                    return (
-                                      <div key={index}>
-                                        <Bloque_horario params={{semestre,hora,dia}} bloque={bloque} />
-                                      </div>
-                                    );
-                                  }
-                                })}
+                              <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700 hover:bg-gray-300" onClick={() => { 
+                                setModal(
+                                  <div className="flex flex-col justify-center items-center border-amber-400 border-4 rounded-md">
+                                    {bloques.map((bloque, index) => {
+                                      if (bloque.semestre === semestre) {
+                                        return (
+                                          <div key={index}>
+                                            <Bloque_horario params={{semestre,hora,dia}} bloque={bloque} />
+                                          </div>
+                                        );
+                                      }
+                                    })}
+                                  </div>)}}>
                               </td>
                             );
                           })}
