@@ -12,6 +12,7 @@ export default function Home({ bloques }) {
   const semSym = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI']
   const tablTh = ['Clave Hora','Lunes','Martes','Miercoles','Jueves','Viernes']
   const tablTh2 = ['Asignatura','Grupo','Profesor','Sala','']
+
   const horas = [['08:00','09:30'],['09:40','11:10'],['11:20','12:50'],['14:45','16:10'],['16:20','17:50'],['17:55','19:25'],['19:30','21:00']]
   const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 
@@ -30,13 +31,13 @@ export default function Home({ bloques }) {
           <title> UTA ICCI - HORARIO </title>
         </Head>
         <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
-          <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
+          {/* <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
             return (
               <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
             )
           })}
-          
+           */}
         </ul>
         {/* <Link href="crud" className="pl-10">Ir al crud</Link> */}
         <div className="flex flex-col">
@@ -55,35 +56,30 @@ export default function Home({ bloques }) {
                   </thead>
                   
                   <tbody className="">
-                    
-                    
                     {horas.map((hora,index) => {
                       return(
                         <tr key={index} className="border-b transition duration-300 ease-in-out hover:bg-gray-200">
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-solid border-gray-700">
                             {hora[0]} - {hora[1]}
                           </td>
-
                           {dias.map((dia, index) => {
                             return (
                               <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700 hover:bg-gray-300" onClick={() => { 
                                 setModal(
-                                  <div className="flex flex-col justify-center items-center border-amber-400 border-4 rounded-md">
+                                  <div> 
                                     {bloques.map((bloque, index) => {
-                                      if (bloque.semestre === semestre) {
-                                        return (
-                                          <div key={index}>
-                                            <Bloque_horario params={{semestre,hora,dia}} bloque={bloque} />
-                                          </div>
-                                        );
-                                      }
+                                      return (
+                                        <div key={index}>
+                                          <Bloque_horario params={{ semestre, hora, dia }} bloque={bloque} />
+                                        </div>
+                                      );
                                     })}
-                                  </div>)}}>
+                                  </div>
+                                );                                
+                              }}>
                               </td>
                             );
                           })}
-                          
-
                         </tr>
                       )
                     })}
