@@ -1,5 +1,5 @@
-import { insertRamo } from "@/services/middleware_db";
-import { useModal } from "context/ModalContext";
+import { insertRamo } from "@/services/middleware_db"
+import { useModal } from "context/ModalContext"
 
 export default function RamosForm() {
   const ramoData = ["ramo", "codigo","semestre"]
@@ -8,8 +8,8 @@ export default function RamosForm() {
   const { setModal } = useModal()
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const { ...data } = Object.fromEntries(new FormData(event.target));
+    event.preventDefault()
+    const { ...data } = Object.fromEntries(new FormData(event.target))
     insertRamo(data)
     setModal(false)
   }
@@ -27,5 +27,5 @@ export default function RamosForm() {
       </div>
     </form>
       
-  );  
+  )  
 }
