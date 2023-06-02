@@ -31,13 +31,13 @@ export default function Home({ bloques }) {
           <title> UTA ICCI - HORARIO </title>
         </Head>
         <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
-          {/* <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
+          <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
             return (
               <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === selectedIndex ? '#17286b' : ''}} onClick={() => {setSemestre(index+1); setSelectedIndex(index)}}>{sem}</button></li>
             )
           })}
-           */}
+          
         </ul>
         {/* <Link href="crud" className="pl-10">Ir al crud</Link> */}
         <div className="flex flex-col">
@@ -64,19 +64,16 @@ export default function Home({ bloques }) {
                           </td>
                           {dias.map((dia, index) => {
                             return (
-                              <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700 hover:bg-gray-300" onClick={() => { 
-                                setModal(
-                                  <div> 
-                                    {bloques.map((bloque, index) => {
-                                      return (
-                                        <div key={index}>
-                                          <Bloque_horario params={{ semestre, hora, dia }} bloque={bloque} />
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
-                                );                                
-                              }}>
+                              <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r border-solid border-gray-700 hover:bg-gray-300">
+                                {bloques.map((bloque, index) => {
+                                  if (bloque.semestre === semestre) {
+                                    return (
+                                      <div key={index}>
+                                        <Bloque_horario params={{semestre,hora,dia}} bloque={bloque} />
+                                      </div>
+                                    );
+                                  }
+                                })}
                               </td>
                             );
                           })}
