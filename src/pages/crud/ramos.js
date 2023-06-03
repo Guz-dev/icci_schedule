@@ -1,5 +1,4 @@
 import Head from "next/head"
-import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useModal } from 'context/ModalContext'
@@ -7,6 +6,7 @@ import { deleteRamo, get_data_table } from "../../services/middleware_db"
 import RamosForm from "@/components/RamosForm"
 import { isAuthenticated } from "@/services/auth"
 import { useRouter } from "next/router"
+import Popup from "@/components/Popup"
 
 export default function Home({ ramos }) {
 
@@ -22,15 +22,11 @@ export default function Home({ ramos }) {
 
   const router = useRouter()
 
-  let token = null
-  try{
-    token = localStorage.getItem("token")
-  }
-  catch(err){
-    console.log("Error al obtener token")    
-  }
+  const [tipo,setTipo] = useState(undefined)
 
   useEffect(() => {
+    let token = null
+    token = localStorage.getItem("token")
     isAuthenticated(token).then(res => {
       console.log(res)
       if (res == false || res == null) {
@@ -40,8 +36,7 @@ export default function Home({ ramos }) {
         setAuth(true)
       }
     })
-  },[router,token])
-     
+  },[router])
 
   return (
     <>
@@ -49,6 +44,9 @@ export default function Home({ ramos }) {
         <Head>
           <title> UTA ICCI - MODIFICACION DE HORARIO </title>
         </Head>
+
+        {/* <input type="text" className="h-16 w-16" onChange={(e) => setPeerid(e.target.value)} />
+        <button className="h-16 w-16" onClick={() => enviarMensaje(peerid,'hola')}>Test p2p message</button> */}
         <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
@@ -57,7 +55,8 @@ export default function Home({ ramos }) {
             )
           })}
         </ul>
-        <div className="flex flex-col">
+        <Popup tipo={tipo}/>
+        <div className="flex flex-col">          
           <label className="ml-auto mr-8 w-32 p-2 rounded text-center text-white text-base font-bold cursor-pointer bg-emerald-500 hover:text-amber-300"
             onClick={() => { 
               setModal(

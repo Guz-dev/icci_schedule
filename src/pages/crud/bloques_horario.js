@@ -47,6 +47,8 @@ export default function Home({ bloques }) {
         router.push("/login")
       } else{
         setAuth(true)
+
+        
       }
     })
   },[router,token])
