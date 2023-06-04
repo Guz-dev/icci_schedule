@@ -21,7 +21,7 @@ export const authUser = async (email, password) => {
     .then((data) => { return data })
     .catch((err) => { return err })
 
-  console.log(token);
+  console.log(token)
 
   if (token){
     localStorage.setItem("token", token)

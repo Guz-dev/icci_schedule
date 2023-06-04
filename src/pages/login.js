@@ -1,23 +1,23 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import Head from "next/head"
+import Image from "next/image"
+import Link from "next/link"
 
-import { authUser } from "@/services/auth";
+import { authUser } from "@/services/auth"
 import { useRouter } from "next/router"
 
 export default function Home() {
 
-  const router = useRouter();
+  const router = useRouter()
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const { email, password } = Object.fromEntries(new FormData(e.target));
+    e.preventDefault()
+    const { email, password } = Object.fromEntries(new FormData(e.target))
     
     authUser(email, password).then(res => {
       if (res.auth == true) {
-        console.log("Login success");
-        router.push("/crud/ramos");
+        console.log("Login success")
+        router.push("/crud/ramos")
       } else {
-        console.log("Login failed");
+        console.log("Login failed")
       }
     })
   }
@@ -56,5 +56,5 @@ export default function Home() {
 
 
     </>
-  );
+  )
 }
