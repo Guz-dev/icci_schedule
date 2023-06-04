@@ -1,10 +1,12 @@
 import Head from "next/head"
 import styles from "@/styles/Home.module.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Bloque_horario from "@/components/bloque_horario"
 import MissingDataAlert from "@/components/MissingDataAlert"
 import { get_data_table } from "@/services/middleware_db"
+import io from "socket.io-client"
 
+let socket
 export default function Home({ bloques }) {
 
   //console.log(bloques);
@@ -18,8 +20,77 @@ export default function Home({ bloques }) {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   const [bloquesState, setBloquesState] = useState(bloques !== null)
+  const [messagebox, setMessagebox] = useState(false)
+
+  const [username, setUsername] = useState(null)
+  const [message, setMessage] = useState("")
+  const [allMessages, setAllMessages] = useState([])
+  function socketInitializer() {
+    fetch("/api/socket")
+
+    socket = io() 
+
+    socket.on ("recieve-message", (data) => {
+      console.log(data)
+      setAllMessages((pre) => [...pre, data])
+    })
+
+    socket.on("connect", () => {
+      console.log("Connected")
+      console.log(socket.id)
+    })
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected")
+    })
+
+  }
+  
+  useEffect(() => {
+    socketInitializer()
+  }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    socket.emit("send-message", {
+      username,
+      message
+    })
+  } 
+
   return ( 
     <>
+
+      <div className="flex absolute justify-end items-end w-full h-4/5 ">
+        <button className="w-12 h-12 bg-black text-white rounded-full cursor-pointer hover:bg-gray-700" onClick={() => setMessagebox(!messagebox)}>^</button>
+      </div>
+      {messagebox && 
+      <div className="flex absolute justify-end w-full h-3/4">
+        <div className="flex justify-end items-end w-6/12 h-1/12 p-2 bg-gray-200">
+          <div className="flex flex-col items-center">
+            <label className="text-black w-2/3 text-center">Usuario</label>
+            <input name="name" className="w-2/3 bg-gray-800 text-white" onChange={(e) => {setUsername(e.target.value)}}></input>
+          </div>
+
+
+          {username && <div className="flex flex-col w-full bg-gray-800 rounded">
+            <label className="w-full text-center text-2xl p-2">Messages</label>
+            {allMessages.map(({ username, message},i) =>(
+              <p key={i} className="text-white text-2xl p-2">
+                {username} : {message}
+              </p>
+            ))}
+            <form onSubmit={handleSubmit}>
+              <input className="bg-gray-800 text-2xl p-2 border-white border-t-2" name="message" value={message} onChange={(e) => setMessage(e.target.value)} />
+            </form>
+          </div>
+          }
+
+          
+        </div>
+      </div>}
+
       {bloquesState ? <>
         <div className={styles.container}>
 
@@ -35,7 +106,6 @@ export default function Home({ bloques }) {
             })}
           
           </ul>
-          {/* <Link href="crud" className="pl-10">Ir al crud</Link> */}
           <div className="flex flex-col">
             <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
               <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -83,11 +153,14 @@ export default function Home({ bloques }) {
             </div>
           </div>
         </div>
+
+        
       </>
         
         : <MissingDataAlert />
       }
     </>
+    
   )
 }
 
@@ -99,4 +172,3 @@ export async function getStaticProps(){
     }
   }
 }
-

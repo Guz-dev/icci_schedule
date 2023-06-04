@@ -45,8 +45,6 @@ export default function Home({ ramos }) {
           <title> UTA ICCI - MODIFICACION DE HORARIO </title>
         </Head>
 
-        {/* <input type="text" className="h-16 w-16" onChange={(e) => setPeerid(e.target.value)} />
-        <button className="h-16 w-16" onClick={() => enviarMensaje(peerid,'hola')}>Test p2p message</button> */}
         <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
