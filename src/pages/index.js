@@ -27,7 +27,7 @@ export default function Home({ bloques }) {
   const [allMessages, setAllMessages] = useState([])
 
   const socketCreated = useRef(false)
-
+  /* 
   const socketInitializer = () => {
     fetch("/api/socket")
 
@@ -63,12 +63,12 @@ export default function Home({ bloques }) {
       username,
       message
     })
-  } 
+  }  */
 
   return ( 
     <>
 
-      <div className="flex absolute justify-end items-end w-full h-4/5 ">
+      {/* <div className="flex absolute justify-end items-end w-full h-4/5 ">
         <button className="w-12 h-12 bg-black text-white rounded-full cursor-pointer hover:bg-gray-700" onClick={() => setMessagebox(!messagebox)}>^</button>
       </div>
       {messagebox && 
@@ -95,7 +95,7 @@ export default function Home({ bloques }) {
 
           
         </div>
-      </div>}
+      </div>} */}
 
       {bloquesState ? <>
         <div className={styles.container}>
