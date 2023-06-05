@@ -1,6 +1,6 @@
 import Head from "next/head"
 import styles from "@/styles/Home.module.css"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Bloque_horario from "@/components/bloque_horario"
 import MissingDataAlert from "@/components/MissingDataAlert"
 import { get_data_table } from "@/services/middleware_db"
@@ -25,7 +25,10 @@ export default function Home({ bloques }) {
   const [username, setUsername] = useState(null)
   const [message, setMessage] = useState("")
   const [allMessages, setAllMessages] = useState([])
-  function socketInitializer() {
+
+  const socketCreated = useRef(false)
+
+  const socketInitializer = () => {
     fetch("/api/socket")
 
     socket = io() 
@@ -47,7 +50,10 @@ export default function Home({ bloques }) {
   }
   
   useEffect(() => {
-    socketInitializer()
+    if(!socketCreated.current) {
+      socketInitializer()
+      socketCreated.current = true
+    }
   }, [])
 
   const handleSubmit = (e) => {
