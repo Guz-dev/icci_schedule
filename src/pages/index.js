@@ -1,12 +1,10 @@
 import Head from "next/head"
 import styles from "@/styles/Home.module.css"
-import { useEffect, useState, useRef } from "react"
+import { useState } from "react"
 import Bloque_horario from "@/components/bloque_horario"
 import MissingDataAlert from "@/components/MissingDataAlert"
 import { get_data_table } from "@/services/middleware_db"
-import io from "socket.io-client"
 
-let socket
 export default function Home({ bloques }) {
 
   //console.log(bloques);
@@ -97,6 +95,7 @@ export default function Home({ bloques }) {
 
 export async function getStaticProps(){
   const { data } = await get_data_table('bloques_horario')
+  
   return {
     props:{
       bloques: data
