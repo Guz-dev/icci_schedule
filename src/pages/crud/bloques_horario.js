@@ -1,10 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useModal } from 'context/ModalContext';
+import Head from "next/head"
+import Image from "next/image"
+import Link from "next/link"
+import { useEffect, useState } from "react"
+import { useModal } from 'context/ModalContext'
 import { isAuthenticated } from "@/services/auth"
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 import { get_data_table } from "@/services/middleware_db"
 
 export default function Home({ bloques }) {
@@ -33,20 +33,22 @@ export default function Home({ bloques }) {
   let token = null
 
   try{
-    token = localStorage.getItem("token");
+    token = localStorage.getItem("token")
   }
   catch(err){
-    console.log("Error al obtener token");    
+    console.log("Error al obtener token")    
   }
   
   useEffect(() => {
     isAuthenticated(token).then(res => {
-      console.log(res);
+      console.log(res)
       if (res == false || res == null) {
-        console.log("No autenticado");
-        router.push("/login");
+        console.log("No autenticado")
+        router.push("/login")
       } else{
-        setAuth(true);
+        setAuth(true)
+
+        
       }
     })
   },[router,token])
@@ -124,7 +126,7 @@ export default function Home({ bloques }) {
                               <a href="#" className="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</a>
                             </td>
                           </tr>
-                        );
+                        )
                       }    
                     })}
                   </tbody>
@@ -138,7 +140,7 @@ export default function Home({ bloques }) {
         </div>
       </>}
     </>
-  ); 
+  ) 
 }
 
 
@@ -152,7 +154,7 @@ export async function getStaticProps(){
       return data
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err)
     })
   return {
     props:{

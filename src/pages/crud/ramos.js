@@ -1,12 +1,12 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useModal } from 'context/ModalContext';
-import { deleteRamo, get_data_table } from "../../services/middleware_db"; 
-import RamosForm from "@/components/RamosForm";
+import Head from "next/head"
+import Link from "next/link"
+import { useEffect, useState } from "react"
+import { useModal } from 'context/ModalContext'
+import { deleteRamo, get_data_table } from "../../services/middleware_db" 
+import RamosForm from "@/components/RamosForm"
 import { isAuthenticated } from "@/services/auth"
 import { useRouter } from "next/router"
+import Popup from "@/components/Popup"
 
 export default function Home({ ramos }) {
 
@@ -20,28 +20,23 @@ export default function Home({ ramos }) {
   const [semestre,setSemestre] = useState(1)
   const [auth,setAuth] = useState(false)
 
-  const router = useRouter();
+  const router = useRouter()
 
-  let token = null;
-  try{
-    token = localStorage.getItem("token");
-  }
-  catch(err){
-    console.log("Error al obtener token");    
-  }
+  const [tipo,setTipo] = useState(undefined)
 
   useEffect(() => {
+    let token = null
+    token = localStorage.getItem("token")
     isAuthenticated(token).then(res => {
-      console.log(res);
+      console.log(res)
       if (res == false || res == null) {
-        console.log("No autenticado");
-        router.push("/login");
+        console.log("No autenticado")
+        router.push("/login")
       } else{
-        setAuth(true);
+        setAuth(true)
       }
     })
-  },[router,token])
-     
+  },[router])
 
   return (
     <>
@@ -49,15 +44,17 @@ export default function Home({ ramos }) {
         <Head>
           <title> UTA ICCI - MODIFICACION DE HORARIO </title>
         </Head>
+
         <ul id="listaTabla" className="inline-flex w-full px-1 pt-2 ">
           <div className="pl-10 pr-2 py-2 font-bold text-gray-800 rounded-t opacity-80" > Semestre </div>
           {semSym.map((sem,index) => {
             return (
-              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === semestre - 1 ? '#17286b' : ''}} onClick={() => {setSemestre(index+1);}}>{sem}</button></li>
+              <li key={index} className="px-4 py-2 font-bold text-gray-800 rounded-t opacity-60"><button className="border-b-4" style={{ borderColor: index === semestre - 1 ? '#17286b' : ''}} onClick={() => {setSemestre(index+1)}}>{sem}</button></li>
             )
           })}
         </ul>
-        <div className="flex flex-col">
+        <Popup tipo={tipo}/>
+        <div className="flex flex-col">          
           <label className="ml-auto mr-8 w-32 p-2 rounded text-center text-white text-base font-bold cursor-pointer bg-emerald-500 hover:text-amber-300"
             onClick={() => { 
               setModal(
@@ -95,7 +92,7 @@ export default function Home({ ramos }) {
                               <button onClick={() => deleteRamo({'id': ramo.id,"semestre": ramo.semestre})} className="text-base bg-red-500 p-2 rounded-r text-center font-bold text-white hover:text-amber-300">Eliminar</button>
                             </td>
                           </tr>
-                        );
+                        )
                       }    
                     })}
                   </tbody>
@@ -109,7 +106,7 @@ export default function Home({ ramos }) {
         </div>
       </>}
     </>
-  ); 
+  ) 
 }
 
 
