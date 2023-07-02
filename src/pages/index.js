@@ -31,16 +31,16 @@ export default function Home({ bloques }) {
           <FilaSem setSemestre={setSemestre} semestre={semestre}/>
           {/* <div className="flex flex-col">
             <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5"> */}
-              <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8"> {/* div que actua como espaciado*/}
-                <div className="overflow-hidden bg-gray-100 rounded-2xl p-2 shadow-md"> {/* el div que contiene la tabla, y actua como borde en el estilo*/}
-                  <table className="min-w-full">
-                    <IndicadorDia/>
-                    <tbody className=""> {/* Contenido */}
-                    <FilaBloques bloques={bloques} semestre={semestre}/>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+          <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8"> {/* div que actua como espaciado*/}
+            <div className="overflow-hidden bg-gray-100 rounded-2xl p-2 shadow-md"> {/* el div que contiene la tabla, y actua como borde en el estilo*/}
+              <table className="min-w-full">
+                <IndicadorDia/>
+                <tbody className=""> {/* Contenido */}
+                <FilaBloques bloques={bloques} semestre={semestre}/>
+                </tbody>
+              </table>
+            </div>
+          </div>
             {/* </div>
           </div> */}
 
