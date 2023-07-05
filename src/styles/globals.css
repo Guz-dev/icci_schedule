@@ -151,6 +151,7 @@ a {
   background: transparent;
   border: none;
   cursor: pointer;
+  color: #000000;
 }
 
 .modal__close-btn svg {
